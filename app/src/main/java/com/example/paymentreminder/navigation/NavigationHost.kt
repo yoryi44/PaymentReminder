@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.paymentreminder.authentication.presentation.login.LoginScreen
 import com.example.paymentreminder.onboarding.presentation.OnboardingScreen
 
 @Composable
@@ -13,10 +14,20 @@ fun NavigationHost(
 )
 {
     NavHost(navController = navHostController, startDestination = startDestination.route) {
+
+        //ONBOARDING
         composable(NavigationRoute.Onboarding.route) {
             OnboardingScreen(
-                onFinish = {}
+                onFinish = {
+                    navHostController.popBackStack()
+                    navHostController.navigate(NavigationRoute.Login.route)
+                }
             )
+        }
+
+        //LOGIN
+        composable(NavigationRoute.Login.route) {
+            LoginScreen()
         }
     }
 }

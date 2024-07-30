@@ -12,29 +12,30 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Blue200,      // Color principal azul claro
-    secondary = Blue700,    // Color secundario azul oscuro
-    tertiary = Blue500,     // Color terciario azul
-    background = Blue900,   // Fondo azul muy oscuro
-    onPrimary = Blue900,    // Texto sobre color principal
-    onSecondary = White,    // Texto sobre color secundario
-    onBackground = White,   // Texto sobre fondo
-    onTertiary = Blue900,   // Texto sobre color terciario
-    surface = Blue900,      // Superficie azul muy oscuro
-    onSurface = Blue200     // Texto sobre superficie
+    primary = Blue200,
+    secondary = Blue700,
+    tertiary = Blue500,
+    background = Blue900,
+    onPrimary = Blue900,
+    onSecondary = White,
+    onBackground = White,
+    onTertiary = Blue900,
+    surface = Blue900,
+    onSurface = Blue200
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Blue500,      // Color principal azul
-    secondary = Blue200,    // Color secundario azul claro
-    tertiary = Blue700,     // Color terciario azul oscuro
-    background = Blue50,    // Fondo azul muy claro
-    onPrimary = White,      // Texto sobre color principal
-    onSecondary = Blue900,  // Texto sobre color secundario
-    onBackground = Blue900, // Texto sobre fondo
-    onTertiary = White,     // Texto sobre color terciario
-    surface = Blue50,       // Superficie azul muy claro
-    onSurface = Blue900     // Texto sobre superficie
+
+    primary = Blue500,
+    secondary = Blue200,
+    tertiary = Blue700,
+    background = Blue50,
+    onPrimary = White,
+    onSecondary = Blue900,
+    onBackground = Blue900,
+    onTertiary = White,
+    surface = Blue50,
+    onSurface = Blue900
 )
 
 @Composable

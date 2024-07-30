@@ -13,13 +13,15 @@ import androidx.compose.ui.unit.sp
 fun PaymentReminderSubtitle(
     subtitle: String,
     modifier: Modifier = Modifier,
-    textAlign: TextAlign = TextAlign.Start
+    textAlign: TextAlign = TextAlign.Start,
+    color: Color = Color.White
 ) {
     Text(
         modifier = modifier,
         text = subtitle,
         fontSize = 18.sp,
         fontWeight = FontWeight.SemiBold,
-        textAlign = textAlign
+        textAlign = textAlign,
+        color = color
     )
 }
