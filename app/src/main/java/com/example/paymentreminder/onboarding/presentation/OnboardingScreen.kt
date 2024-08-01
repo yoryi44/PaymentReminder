@@ -1,6 +1,7 @@
 package com.example.paymentreminder.onboarding.presentation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
 import com.example.paymentreminder.R
 import com.example.paymentreminder.onboarding.presentation.components.OnboardingPager
 
@@ -11,18 +12,23 @@ fun OnboardingScreen(
 
     var pagerlist = listOf(
         OnboardingPagerInformation(
-            "Bienvenido",
-            "Te damos la bienvenida a PaymentReminder",
+            stringResource(id = R.string.welcome),
+            stringResource(id = R.string.welcome_subtitle),
             R.drawable.onboarding_background
         ),
         OnboardingPagerInformation(
-            "Esta app ayuda a tu bolsillo",
-            "Te ayudamos a tener en cuenta todos tus pagos mensuales",
+            stringResource(id = R.string.pager_title_1),
+            stringResource(id = R.string.pager_subtitle_1),
             R.drawable.onboarding_background
         ),
         OnboardingPagerInformation(
-            "Que no se te pase una!",
-            "Qué tus obligaciones sean lo primero y no se te pierda de vista!",
+            stringResource(id = R.string.pager_title_2),
+            stringResource(id = R.string.pager_subtitle_2),
+            R.drawable.onboarding_background
+        ),
+        OnboardingPagerInformation(
+            stringResource(id = R.string.pager_title_3),
+            stringResource(id = R.string.pager_subtitle_3),
             R.drawable.onboarding_background
         )
     )

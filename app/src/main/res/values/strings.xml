@@ -1,3 +1,21 @@
 <resources>
+
+    //APP NAME
     <string name="app_name">Payment reminder</string>
+
+    //ONBOARDING
+    <string name="welcome">Welcome!</string>
+    <string name="welcome_subtitle">Welcome to PaymentReminder</string>
+    <string name="pager_title_1">This app helps your wallet</string>
+    <string name="pager_title_2">Don´t miss one!</string>
+    <string name="pager_title_3">Simple Management</string>
+    <string name="pager_subtitle_1">We help you keep in mind all your monthly payments, and avoid extra costs for missing your payment dates.</string>
+    <string name="pager_subtitle_2">Let your obligations come first and don´t lose sight of them!</string>
+    <string name="pager_subtitle_3">View all your payments in one place</string>
+
+    //LOGIN
+    <string name="login_title">LOGIN</string>
+    <string name="login_subtitle">You´re ready to start using ApymentReminder!</string>
+    <string name="enter_email">Enter your email</string>
+    <string name="enter_password">Enter your password</string>
 </resources>

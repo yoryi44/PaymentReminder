@@ -10,6 +10,7 @@ activityCompose = "1.9.1"
 composeBom = "2024.06.00"
 accompanist_version = "0.28.0"
 nav_version = "2.7.7"
+constraintlayoutComposeVersion = "1.0.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -33,6 +34,7 @@ accompanist-pager-indicators = { module = "com.google.accompanist:accompanist-pa
 
 #NAVVIGATION  COMPOSE (NAV HOST)
 nav-host = { module = "androidx.navigation:navigation-compose",version.ref = "nav_version" }
+androidx-constraintlayout-compose = { group = "androidx.constraintlayout", name = "constraintlayout-compose", version.ref = "constraintlayoutComposeVersion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    //NOMBRE APP
+    <string name="app_name">Recordatorio de Pagos</string>
+
+    //ONBOARDING
+    <string name="welcome">Bienvenido!!</string>
+    <string name="welcome_subtitle">Te damos la bienvenida a PaymentReminder</string>
+    <string name="pager_title_1">Esta app ayuda a tu bolsillo</string>
+    <string name="pager_title_2">Que no se te pase una!</string>
+    <string name="pager_title_3">Gestión Sencilla</string>
+    <string name="pager_subtitle_1">Te ayudamos a tener en cuenta todos tus pagos mensuales</string>
+    <string name="pager_subtitle_2">Qué tus obligaciones sean lo primero y no se te pierda de vista!</string>
+    <string name="pager_subtitle_3">Visualiza todos tus pagos en un solo lugar</string>
+
+    //LOGIN
+    <string name="login_title">LOGIN</string>
+    <string name="login_subtitle">Estás listo para empezar a usar ApymentReminder!</string>
+    <string name="enter_email">Ingresa tu email</string>
+    <string name="enter_password">Ingresa tu contraseña</string>
+</resources>

@@ -93,7 +93,7 @@ fun OnboardingPager(
                 ) {
                     if (pagerState.currentPage == pages.lastIndex) {
                         PaymentRemainderButton(
-                            modifier = Modifier.fillMaxWidth()
+                            modifier = Modifier.fillMaxWidth(), text = "Get Starter"
                         )
                         {
                             onFinish()

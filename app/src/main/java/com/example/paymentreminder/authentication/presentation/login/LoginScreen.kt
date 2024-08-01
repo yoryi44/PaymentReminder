@@ -21,6 +21,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.paymentreminder.R
@@ -52,7 +53,7 @@ fun LoginScreen(
                 .padding(20.dp)
         ) {
             PaymentReminderTitle(
-                title = "Login",
+                title = stringResource(id = R.string.login_title),
                 color = Color.Black,
                 modifier = modifier
                     .padding(20.dp)
@@ -60,7 +61,7 @@ fun LoginScreen(
                 textAlign = TextAlign.Center
             )
             PaymentReminderSubtitle(
-                subtitle = "Your responsabilties is the first",
+                subtitle = stringResource(id = R.string.login_subtitle),
                 color = Color.Black,
                 textAlign = TextAlign.Center,
                 modifier = modifier.fillMaxWidth()

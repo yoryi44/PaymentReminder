@@ -12,6 +12,7 @@ import androidx.compose.ui.graphics.Color
 @Composable
 fun PaymentRemainderButton(
     modifier: Modifier = Modifier,
+    text: String,
     onClick: () -> Unit
 ) {
     Button(
@@ -19,6 +20,6 @@ fun PaymentRemainderButton(
             containerColor = MaterialTheme.colorScheme.primary
         )
     ) {
-        Text(text = "Get Starter")
+        Text(text = text)
     }
 }
