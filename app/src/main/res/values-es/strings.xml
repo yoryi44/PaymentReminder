@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     //NOMBRE APP
-    <string name="app_name">Recordatorio de Pagos</string>
+    <string name="app_name">Payment reminder</string>
 
     //ONBOARDING
     <string name="welcome">Bienvenido!!</string>

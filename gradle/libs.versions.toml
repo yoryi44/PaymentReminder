@@ -8,9 +8,26 @@ espressoCore = "3.6.1"
 lifecycleRuntimeKtx = "2.8.4"
 activityCompose = "1.9.1"
 composeBom = "2024.06.00"
-accompanist_version = "0.28.0"
-nav_version = "2.7.7"
 constraintlayoutComposeVersion = "1.0.1"
+googleGmsGoogleServicesVersion = "4.4.2"
+kspVersion = "1.9.23-1.0.19"
+jetbrainsKotlinJvmVersion = "1.9.23"
+
+#PAGER
+accompanist_version = "0.28.0"
+
+#NAVHOST
+nav_version = "2.7.7"
+
+#FIREBASE
+firebaseAnalyticsVersion = "22.0.2"
+firebaseAuthVersion = "23.0.0"
+
+#DAGGER HILT
+hiltAndroid = "2.50"
+hiltNavigationVersion = "1.2.0"
+hiltAndroidCompiler = "2.50"
+hiltCompiler = "1.2.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -35,7 +52,20 @@ accompanist-pager-indicators = { module = "com.google.accompanist:accompanist-pa
 #NAVVIGATION  COMPOSE (NAV HOST)
 nav-host = { module = "androidx.navigation:navigation-compose",version.ref = "nav_version" }
 androidx-constraintlayout-compose = { group = "androidx.constraintlayout", name = "constraintlayout-compose", version.ref = "constraintlayoutComposeVersion" }
+firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics", version.ref = "firebaseAnalyticsVersion" }
+firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuthVersion" }
+
+#DAGGER HILT
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid"}
+hilt-compiler = { module = "androidx.hilt:hilt-compiler",version.ref = "hiltCompiler" }
+hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltAndroidCompiler" }
+hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationVersion"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServicesVersion" }
+daggerHiltPlugin = { id = "com.google.dagger.hilt.android", version.ref = "hiltAndroid"}
+kspPlugin = { id = "com.google.devtools.ksp", version.ref = "kspVersion" }
+jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvmVersion" }
+android-library = { id = "com.android.library", version.ref = "agp" }
