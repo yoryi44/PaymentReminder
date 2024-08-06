@@ -6,6 +6,7 @@ import com.example.paymentreminder.authentication.domain.EmailMatcher.EmailMatch
 import com.example.paymentreminder.authentication.domain.repository.Authentificationrepository
 import com.example.paymentreminder.authentication.domain.usecase.LoginWhitEmailUseCase
 import com.example.paymentreminder.authentication.domain.usecase.ValidateEmailUseCase
+import com.example.paymentreminder.authentication.domain.usecase.ValidatePasswordUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,6 +21,12 @@ object AuthentificationModule {
     @Singleton
     fun provideValidateEmailUseCase(emailMatcher: EmailMatcher) : ValidateEmailUseCase {
         return ValidateEmailUseCase(emailMatcher)
+    }
+
+    @Provides
+    @Singleton
+    fun provideValidatePasswordUseCase() : ValidatePasswordUseCase {
+        return ValidatePasswordUseCase()
     }
 
     @Provides

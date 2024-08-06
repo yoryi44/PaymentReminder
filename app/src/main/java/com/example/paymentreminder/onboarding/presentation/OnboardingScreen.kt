@@ -1,14 +1,25 @@
 package com.example.paymentreminder.onboarding.presentation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.res.stringResource
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.paymentreminder.R
 import com.example.paymentreminder.onboarding.presentation.components.OnboardingPager
 
 @Composable
 fun OnboardingScreen(
+    onboardingViewModel: OnboardingViewModel = hiltViewModel(),
     onFinish: () -> Unit
 ) {
+
+    val state = onboardingViewModel.state
+
+    LaunchedEffect(key1 = state.hasSeenOnboarding) {
+        if(state.hasSeenOnboarding){
+            onFinish()
+        }
+    }
 
     var pagerlist = listOf(
         OnboardingPagerInformation(
@@ -33,5 +44,8 @@ fun OnboardingScreen(
         )
     )
 
-    OnboardingPager(pages = pagerlist, onFinish = onFinish)
+    OnboardingPager(pages = pagerlist)
+    {
+        onboardingViewModel.onEvent(OnboardingEvent.completeOnboarding)
+    }
 }

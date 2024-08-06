@@ -28,6 +28,7 @@ import com.example.paymentreminder.R
 import com.example.paymentreminder.core.presentation.PaymentRemainderButton
 import com.example.paymentreminder.core.presentation.PaymentReminderSubtitle
 import com.example.paymentreminder.core.presentation.PaymentReminderTitle
+import com.example.paymentreminder.onboarding.presentation.OnboardingEvent
 import com.example.paymentreminder.onboarding.presentation.OnboardingPagerInformation
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
@@ -40,7 +41,7 @@ import kotlinx.coroutines.launch
 fun OnboardingPager(
     pages: List<OnboardingPagerInformation>,
     modifier: Modifier = Modifier,
-    onFinish: () -> Unit
+    onFinish: () -> Unit,
 ) {
 
     val pagerState = rememberPagerState()

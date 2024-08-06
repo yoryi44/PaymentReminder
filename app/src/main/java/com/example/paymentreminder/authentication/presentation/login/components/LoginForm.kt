@@ -46,7 +46,7 @@ fun LoginForm(state: LoginState, onEvent: (LoginEvent) -> Unit) {
                 label = stringResource(id = R.string.enter_password),
                 value = state.password,
                 keyboardType = KeyboardType.Password,
-                errorMessaje = state.passwordError,
+                errorMessaje = if(state.passwordError != null) stringResource(id = state.passwordError.toInt()) else null,
                 onValueChange = { onEvent(LoginEvent.PasswordChange(it)) }
             )
             Spacer(modifier = Modifier.size(10.dp))

@@ -7,6 +7,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.paymentreminder.authentication.domain.usecase.LoginWhitEmailUseCase
 import com.example.paymentreminder.authentication.domain.usecase.ValidateEmailUseCase
+import com.example.paymentreminder.authentication.domain.usecase.ValidatePasswordUseCase
+import com.example.paymentreminder.authentication.presentation.util.ParserErrorPassword
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -14,7 +16,8 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     private val loginWhitEmailUseCase: LoginWhitEmailUseCase,
-    private val validateEmailUseCase: ValidateEmailUseCase
+    private val validateEmailUseCase: ValidateEmailUseCase,
+    private val validatePasswordUseCase: ValidatePasswordUseCase,
 ) : ViewModel() {
 
     var state by mutableStateOf(LoginState())
@@ -55,7 +58,10 @@ class LoginViewModel @Inject constructor(
             )
         }
 
-        if()
+        val passwordError = validatePasswordUseCase(password = state.password)
+        state = state.copy(
+            passwordError = ParserErrorPassword(passwordError)
+        )
 
         viewModelScope.launch {
             loginWhitEmailUseCase(state.email,state.password)
