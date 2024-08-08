@@ -1,9 +1,10 @@
-package com.example.paymentreminder.authentication.di
+package com.example.paymentreminder.authentication.data.di
 
 import com.example.paymentreminder.authentication.data.matcher.EmailMatcherImpl
 import com.example.paymentreminder.authentication.data.repository.AuthentificationRepositoryImpl
 import com.example.paymentreminder.authentication.domain.EmailMatcher.EmailMatcher
 import com.example.paymentreminder.authentication.domain.repository.Authentificationrepository
+import com.example.paymentreminder.authentication.domain.usecase.GetUserIdUseCase
 import com.example.paymentreminder.authentication.domain.usecase.LoginWhitEmailUseCase
 import com.example.paymentreminder.authentication.domain.usecase.ValidateEmailUseCase
 import com.example.paymentreminder.authentication.domain.usecase.ValidatePasswordUseCase
@@ -39,6 +40,12 @@ object AuthentificationModule {
     @Singleton
     fun provideLoginWhitEmailUseCase(authentificationrepository: Authentificationrepository) : LoginWhitEmailUseCase {
         return LoginWhitEmailUseCase(authentificationrepository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideGetUserIdUseCase(authentificationrepository: Authentificationrepository) : GetUserIdUseCase {
+        return GetUserIdUseCase(authentificationrepository)
     }
 
     @Provides

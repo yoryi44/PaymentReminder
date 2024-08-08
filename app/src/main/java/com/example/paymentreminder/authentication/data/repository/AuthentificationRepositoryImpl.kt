@@ -25,4 +25,15 @@ class AuthentificationRepositoryImpl:Authentificationrepository {
             Result.failure(e)
         }
     }
+
+    /****
+     * Método encargado de retorna el id del usuario logeado
+     * por Firebase
+     * Desarrollador: Jorge Meza
+     * 08/08/2024
+
+     */
+    override fun getUserId(): String? {
+        return Firebase.auth.currentUser?.uid
+    }
 }

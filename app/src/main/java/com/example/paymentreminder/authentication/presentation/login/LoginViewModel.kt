@@ -67,7 +67,7 @@ class LoginViewModel @Inject constructor(
             loginWhitEmailUseCase(state.email,state.password)
                 .onSuccess{
                     state = state.copy(
-                        email = state.email
+                        isLoggedIn = true
                     )
                 }
                 .onFailure{
@@ -75,7 +75,6 @@ class LoginViewModel @Inject constructor(
                         emailError = it.message!!
                     )
                 }
-
         }
     }
 }

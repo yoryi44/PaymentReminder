@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -26,9 +27,17 @@ import com.example.paymentreminder.core.presentation.PaymentReminderTitle
 @Composable
 fun LoginScreen(
     loginViewModel: LoginViewModel = hiltViewModel(),
+    onLoginSuccess: () -> Unit
 ) {
 
     val state = loginViewModel.state
+
+    LaunchedEffect(key1 = state.isLoggedIn) {
+        if(state.isLoggedIn)
+        {
+            onLoginSuccess()
+        }
+    }
 
     Box(
         modifier = Modifier
