@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -16,7 +17,10 @@ import com.example.paymentreminder.ui.theme.PaymentReminderTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : ComponentActivity() {
+class MainActivity() : ComponentActivity() {
+
+    private val mainViewModel by viewModels<MainViewModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -28,11 +32,21 @@ class MainActivity : ComponentActivity() {
                         val navController = rememberNavController()
                         NavigationHost(
                             navHostController = navController,
-                            startDestination = NavigationRoute.Onboarding,
+                            startDestination = getDestination(),
                         )
                     }
                 }
             }
         }
+    }
+
+    private fun getDestination(): NavigationRoute {
+
+        if(mainViewModel.hasSeenOnboarding)
+        {
+            return NavigationRoute.Login
+        }
+
+        return NavigationRoute.Onboarding
     }
 }
