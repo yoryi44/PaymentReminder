@@ -45,6 +45,9 @@ class LoginViewModel @Inject constructor(
 
     fun login()
     {
+        state = state.copy(
+            isLoading = true
+        )
 
         state = state.copy(
             emailError = null,
@@ -63,18 +66,25 @@ class LoginViewModel @Inject constructor(
             passwordError = ParserErrorPassword(passwordError)
         )
 
-        viewModelScope.launch {
-            loginWhitEmailUseCase(state.email,state.password)
-                .onSuccess{
-                    state = state.copy(
-                        isLoggedIn = true
-                    )
-                }
-                .onFailure{
-                    state = state.copy(
-                        emailError = it.message!!
-                    )
-                }
+        if(state.emailError == null && state.passwordError == null)
+        {
+            viewModelScope.launch {
+                loginWhitEmailUseCase(state.email,state.password)
+                    .onSuccess{
+                        state = state.copy(
+                            isLoggedIn = true
+                        )
+                    }
+                    .onFailure{
+                        state = state.copy(
+                            emailError = it.message!!
+                        )
+                    }
+            }
+        } else {
+            state = state.copy(
+                isLoading = false
+            )
         }
     }
 }

@@ -18,8 +18,17 @@
     <string name="login_subtitle">Estás listo para empezar a usar ApymentReminder!</string>
     <string name="enter_email">Ingresa tu email</string>
     <string name="enter_password">Ingresa tu contraseña</string>
+    <string name="email_error">Email no válido</string>
     <string name="password_lowercase_error">La contraseña debe contener al menos una letra minúscula</string>
     <string name="password_uppercase_error">La contraseña debe contener al menos una letra mayúscula</string>
     <string name="password_digit_error">La contraseña debe contener al menos un número</string>
     <string name="password_lenght_error">La contraseña debe tener al menos 8 caracteres</string>
+
+    //HOME
+    <string name="home_tittle">INICIO</string>
+    <string name="home">Inicio</string>
+    <string name="stadistics">Estadísticas</string>
+
+    //PAYMENT LIST
+    <string name="search">Buscar</string>
 </resources>

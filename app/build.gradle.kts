@@ -67,6 +67,7 @@ dependencies {
     implementation(libs.androidx.constraintlayout.compose)
     implementation(libs.firebase.analytics)
     implementation(libs.firebase.auth)
+    implementation(libs.protolite.well.known.types)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

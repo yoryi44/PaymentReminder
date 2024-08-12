@@ -1,35 +1,34 @@
 package com.example.paymentreminder.home.presentation
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.Text
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.tooling.preview.Preview
+import com.example.paymentreminder.home.presentation.components.HomeBottomBar
+import com.example.paymentreminder.home.presentation.components.HomePager
+import com.google.accompanist.pager.ExperimentalPagerApi
+import com.google.accompanist.pager.rememberPagerState
 
+@OptIn(ExperimentalPagerApi::class)
 @Composable
 fun HomeScreen() {
 
-    val myItemList = listOf(
-        "prueba",
-        "prueba",
-        "prueba",
-        "prueba",
-        "prueba",
-        "prueba",
-        "prueba",
-        "prueba",
-        "prueba",
-        "prueba",
-    )
+    val pagerState = rememberPagerState()
 
-    LazyColumn(
-        contentPadding = PaddingValues(16.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp)
-    ) {
-        items(myItemList.size) { item ->
-            Text(text = item.toString())
+    Scaffold(
+
+        //BARRA DE NAVEGACIÓN INFERIOR
+        bottomBar = {
+            HomeBottomBar(pagerState)
         }
-    }
+    ) { padding ->
 
+        //VIEW PAGER
+        HomePager(pagerState, padding)
+    }
+}
+
+@Preview
+@Composable
+fun HomeScreenPreview() {
+    HomeScreen()
 }

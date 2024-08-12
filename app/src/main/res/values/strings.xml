@@ -18,8 +18,18 @@
     <string name="login_subtitle">You´re ready to start using ApymentReminder!</string>
     <string name="enter_email">Enter your email</string>
     <string name="enter_password">Enter your password</string>
+    <string name="email_error">"Email is not valid"</string>
     <string name="password_lowercase_error">Password must contain at least one lowercase letter</string>
     <string name="password_uppercase_error">Password must contain at least one uppercase letter</string>
     <string name="password_digit_error">Password must contain at least one digit</string>
     <string name="password_lenght_error">Password must be at least 8 characters</string>
+
+    //HOME
+    <string name="home_tittle">HOME</string>
+    <string name="home">Home</string>
+    <string name="stadistics">Statistics</string>
+
+    //PAYMENT LIST
+    <string name="search">Search</string>
+
 </resources>

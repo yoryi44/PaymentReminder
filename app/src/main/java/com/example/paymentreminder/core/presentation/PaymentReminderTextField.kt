@@ -57,7 +57,7 @@ fun PaymentReminderTextField(
                     }
                 }
             },
-            modifier = Modifier.fillMaxWidth(),
+            modifier = modifier,
             colors = OutlinedTextFieldDefaults.colors(
                 focusedTextColor = Color.Black,
                 unfocusedTextColor = Color.Gray,
