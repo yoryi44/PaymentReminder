@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.example.paymentreminder.authentication.presentation.login.LoginScreen
+import com.example.paymentreminder.authentication.presentation.signup.SignupScreen
 import com.example.paymentreminder.paymentList.presentation.PaymentListScreen
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
@@ -30,8 +31,11 @@ fun HomePager(
     ) { index ->
         when (index) {
             0 -> PaymentListScreen()
-            1 -> LoginScreen(){}
-            2 -> PaymentListScreen()
+            1 -> LoginScreen(
+                onLoginSuccess = { /*TODO*/ },
+                onCreateAccount = { /*TODO*/ }
+            )
+            2 -> SignupScreen(){}
         }
     }
 }

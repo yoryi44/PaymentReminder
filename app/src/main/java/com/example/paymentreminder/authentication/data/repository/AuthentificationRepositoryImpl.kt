@@ -27,11 +27,28 @@ class AuthentificationRepositoryImpl:Authentificationrepository {
     }
 
     /****
+     * Método encargado de realizar el registro con el email y contraseña
+     * Desarrollador: Jorge Meza
+     * 13/08/2024
+     * @param email
+     * @param password
+     * */
+    override suspend fun signup(email: String, password: String): Result<Unit> {
+        return try {
+            Firebase.auth.createUserWithEmailAndPassword(email, password).await()
+            Result.success(Unit)
+        }
+        catch (e:Exception)
+        {
+            Result.failure(e)
+        }
+    }
+
+    /****
      * Método encargado de retorna el id del usuario logeado
      * por Firebase
      * Desarrollador: Jorge Meza
      * 08/08/2024
-
      */
     override fun getUserId(): String? {
         return Firebase.auth.currentUser?.uid

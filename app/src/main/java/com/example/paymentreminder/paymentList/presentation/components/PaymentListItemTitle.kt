@@ -22,7 +22,7 @@ fun PaymentListItemTitle(
 ) {
     Row(modifier = modifier
         .fillMaxWidth()
-        .background(color = colorResource(id = R.color.blue_700))
+        .background(color = colorResource(id = R.color.success))
         .height(40.dp)
         .padding(10.dp),
         horizontalArrangement = Arrangement.SpaceBetween,

@@ -23,6 +23,7 @@
     <string name="password_uppercase_error">La contraseña debe contener al menos una letra mayúscula</string>
     <string name="password_digit_error">La contraseña debe contener al menos un número</string>
     <string name="password_lenght_error">La contraseña debe tener al menos 8 caracteres</string>
+    <string name="dont_have_an_account">¿No tienes una cuenta?</string>
 
     //HOME
     <string name="home_tittle">INICIO</string>
@@ -31,4 +32,9 @@
 
     //PAYMENT LIST
     <string name="search">Buscar</string>
+
+    //SIGNUP
+    <string name="signup_title">REGISTRO</string>
+    <string name="signup">Regístrate</string>
+    <string name="signup_subtitle">crea una cuenta y disfruta de todos nuestros beneficios!</string>
 </resources>

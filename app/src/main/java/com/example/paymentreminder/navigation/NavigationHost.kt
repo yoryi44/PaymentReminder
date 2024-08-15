@@ -5,6 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.paymentreminder.authentication.presentation.login.LoginScreen
+import com.example.paymentreminder.authentication.presentation.signup.SignupScreen
 import com.example.paymentreminder.home.presentation.HomeScreen
 import com.example.paymentreminder.onboarding.presentation.OnboardingScreen
 
@@ -32,11 +33,24 @@ fun NavigationHost(
                 onLoginSuccess = {
                     navHostController.popBackStack()
                     navHostController.navigate(NavigationRoute.Home.route)
+                },
+                onCreateAccount = {
+                    navHostController.navigate(NavigationRoute.Signup.route)
                 }
             )
         }
 
         //LOGIN
+        composable(NavigationRoute.Signup.route) {
+            SignupScreen(
+                onSignupSuccess = {
+                    navHostController.popBackStack()
+                    navHostController.navigate(NavigationRoute.Login.route)
+                }
+            )
+        }
+
+        //HOME
         composable(NavigationRoute.Home.route) {
             HomeScreen()
         }
