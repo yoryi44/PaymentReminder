@@ -1,4 +1,4 @@
-package com.example.paymentreminder.paymentList.presentation.components
+package com.example.paymentreminder.paymentsReminder.presentation.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row

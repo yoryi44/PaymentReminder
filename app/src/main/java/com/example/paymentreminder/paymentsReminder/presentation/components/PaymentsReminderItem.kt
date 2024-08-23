@@ -1,4 +1,4 @@
-package com.example.paymentreminder.paymentList.presentation.components
+package com.example.paymentreminder.paymentsReminder.presentation.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -9,7 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun PaymentListItem(
+fun PaymentsReminderItem(
     modifier: Modifier = Modifier,
     text: String
 ) {

@@ -7,7 +7,7 @@ junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 lifecycleRuntimeKtx = "2.8.4"
 activityCompose = "1.9.1"
-composeBom = "2024.06.00"
+composeBom = "2024.08.00"
 constraintlayoutComposeVersion = "1.0.1"
 googleGmsGoogleServicesVersion = "4.4.2"
 kspVersion = "1.9.23-1.0.19"
@@ -20,7 +20,7 @@ accompanist_version = "0.28.0"
 nav_version = "2.7.7"
 
 #FIREBASE
-firebaseAnalyticsVersion = "22.0.2"
+firebaseAnalyticsVersion = "22.1.0"
 firebaseAuthVersion = "23.0.0"
 
 #DAGGER HILT
@@ -29,6 +29,11 @@ hiltNavigationVersion = "1.2.0"
 hiltAndroidCompiler = "2.50"
 hiltCompiler = "1.2.0"
 protoliteWellKnownTypesVersion = "18.0.0"
+
+#RETROFIT
+retrofit = "2.9.0"
+
+okhttp3 = "5.0.0-alpha.10"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -62,6 +67,14 @@ hilt-compiler = { module = "androidx.hilt:hilt-compiler",version.ref = "hiltComp
 hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltAndroidCompiler" }
 hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationVersion"}
 protolite-well-known-types = { group = "com.google.firebase", name = "protolite-well-known-types", version.ref = "protoliteWellKnownTypesVersion" }
+
+#RETROFIT
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+retrofit-converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
+
+#INTERCEPTOR
+logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp3" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -84,10 +84,16 @@ dependencies {
     implementation(libs.nav.host)
 
     //DAGGER HILT
-    //DAGGER HILT
     implementation(libs.hilt.android)
     implementation(libs.hilt.navigation.compose)
     ksp(libs.hilt.android.compiler)
     ksp(libs.hilt.compiler)
+
+    //RETROFIT
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.gson)
+
+    //INTERCEPTOR
+    implementation(libs.logging.interceptor)
 
 }
