@@ -35,10 +35,14 @@ fun PaymentsReminderScreen(
 ) {
 
     val focusManager = LocalFocusManager.current
+    val state = paymentsReminderViewModel.state
 
-    val options = listOf("Option 1", "Option 2", "Option 3")
+    val options =
+        listOf(stringResource(id = R.string.amount), stringResource(id = R.string.arrears))
 
-    Column(modifier = modifier.background(Color.White)) {
+    Column(
+        modifier = modifier.background(Color.White)
+    ) {
         Row(
             modifier = Modifier
                 .padding(10.dp)
@@ -48,10 +52,12 @@ fun PaymentsReminderScreen(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             PaymentReminderTextField(
+                modifier = Modifier.fillMaxWidth(0.9f),
                 label = stringResource(id = R.string.search),
                 leadingIcon = Icons.Default.Search,
-                value = "",
+                value = state.search,
                 keyboardActions = KeyboardActions(onAny = {
+                    paymentsReminderViewModel.onEvent(PaymentsReminderEvent.OnSearch)
                     focusManager.clearFocus()
                 }),
                 keyboardOptions = KeyboardOptions(
@@ -59,8 +65,12 @@ fun PaymentsReminderScreen(
                     keyboardType = KeyboardType.Text,
                     imeAction = ImeAction.Search
                 ),
-            ) {}
-            PaymentRemainderDropDwonMenu(modifier = modifier, "Filter", options)
+            ) {
+                paymentsReminderViewModel.onEvent(PaymentsReminderEvent.SearchChanged(it))
+            }
+            PaymentRemainderDropDwonMenu(modifier = modifier, "Filter", options) {
+                paymentsReminderViewModel.onEvent(PaymentsReminderEvent.OnFilter(it))
+            }
         }
 
         LazyColumn(
@@ -71,8 +81,10 @@ fun PaymentsReminderScreen(
             contentPadding = PaddingValues(16.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
-            items(paymentsReminderViewModel.state.paymentsReminder.size) { item ->
-                PaymentsReminderItem(text = item.toString())
+            items(state.paymentsReminder.size) { item ->
+                PaymentsReminderItem(paymentReminder = state.paymentsReminder[item]) {
+                    paymentsReminderViewModel.onEvent(PaymentsReminderEvent.OnItemEdit(state.paymentsReminder[item].id))
+                }
             }
         }
 

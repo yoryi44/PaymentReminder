@@ -1,11 +1,13 @@
 package com.example.paymentreminder.paymentsReminder.presentation
 
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.paymentreminder.paymentsReminder.domain.repository.PaymentsReminderRepository
+import com.example.paymentreminder.paymentsReminder.domain.usecase.GetPaymentsReminderSearchUseCase
 import com.example.paymentreminder.paymentsReminder.domain.usecase.GetPaymentsReminderUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collectLatest
@@ -14,7 +16,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PaymentsReminderViewModel @Inject constructor(
-    private val getPaymentsReminderUseCase: GetPaymentsReminderUseCase
+    private val getPaymentsReminderUseCase: GetPaymentsReminderUseCase,
+    private val getPaymentsReminderSearchUseCase: GetPaymentsReminderSearchUseCase
 ) : ViewModel() {
 
     var state by mutableStateOf(PaymentsReminderState())
@@ -28,10 +31,40 @@ class PaymentsReminderViewModel @Inject constructor(
         when (event) {
             is PaymentsReminderEvent.OnFilter -> {
 
+                var filtro = "";
+                if((event.filter.equals("Amount")) || event.filter.equals("Valor"))
+                {
+                    filtro = "amount"
+                }
+                else
+                {
+                    filtro = "arrears"
+                }
+                getPaymentsReminderSearch(state.search, filtro)
             }
 
             is PaymentsReminderEvent.OnSearch -> {
+                getPaymentsReminderSearch(state.search, "amount")
+            }
 
+            is PaymentsReminderEvent.OnItemEdit -> {
+
+            }
+
+            is PaymentsReminderEvent.SearchChanged -> {
+                state = state.copy(
+                    search = event.search
+                )
+            }
+        }
+    }
+
+    private fun getPaymentsReminderSearch(searchQuery: String, orderBy : String) {
+        viewModelScope.launch {
+            getPaymentsReminderSearchUseCase(searchQuery, orderBy).collectLatest {
+                state = state.copy(
+                    paymentsReminder = it
+                )
             }
         }
     }

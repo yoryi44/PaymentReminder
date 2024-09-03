@@ -1,16 +1,16 @@
 package com.example.paymentreminder.paymentsReminder.data.remote.dto
 
-import java.time.ZonedDateTime
+import com.google.gson.annotations.SerializedName
 
 data class PaymentsReminderDto(
-    val _id: String,
-    val amount: Double,
-    val created_at: String,
-    val currency: String,
-    val due_date: String,
-    val notes: String,
-    val reminder_date: String,
-    val status: String,
-    val updated_at: String,
-    val user_id: String
+    @SerializedName("id") val id: String,
+    @SerializedName("amount") val amount: Double,
+    @SerializedName("createdAt") val createdAt: String,
+    @SerializedName("currency") val currency: String,
+    @SerializedName("dueDate") val dueDate: String,
+    @SerializedName("notes") val notes: String,
+    @SerializedName("reminderDate") val reminderDate: String,
+    @SerializedName("status") val status: String,
+    @SerializedName("updatedAt") val updatedAt: String,
+    @SerializedName("userId") val userId: String
 )

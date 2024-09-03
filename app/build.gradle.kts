@@ -96,4 +96,9 @@ dependencies {
     //INTERCEPTOR
     implementation(libs.logging.interceptor)
 
+    //ROOM
+    implementation(libs.room.ktx)
+    implementation(libs.room.runtime)
+    ksp(libs.room.compiler)
+
 }

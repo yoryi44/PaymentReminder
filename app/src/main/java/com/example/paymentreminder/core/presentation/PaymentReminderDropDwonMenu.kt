@@ -23,6 +23,7 @@ fun PaymentRemainderDropDwonMenu(
     modifier: Modifier = Modifier,
     defaultSelectedOption: String,
     options: List<String>,
+    onClick : (String) -> Unit
 ) {
 
     var selectedOption by remember { mutableStateOf(defaultSelectedOption) }
@@ -47,10 +48,11 @@ fun PaymentRemainderDropDwonMenu(
                     onClick = {
                         selectedOption = defaultSelectedOption
                         expanded = false
+                        onClick(option)
                     },
-                    leadingIcon = {
-                        Icon(Icons.Default.Check, contentDescription = null)
-                    }
+//                    leadingIcon = {
+//                        Icon(Icons.Default., contentDescription = null)
+//                    }
                 )
             }
         }

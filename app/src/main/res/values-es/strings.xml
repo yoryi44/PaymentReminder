@@ -32,6 +32,8 @@
 
     //PAYMENT LIST
     <string name="search">Buscar</string>
+    <string name="amount">Valor</string>
+    <string name="arrears">Días mora</string>
 
     //SIGNUP
     <string name="signup_title">REGISTRO</string>

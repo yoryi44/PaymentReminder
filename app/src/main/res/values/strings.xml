@@ -32,6 +32,8 @@
 
     //PAYMENT LIST
     <string name="search">Search</string>
+    <string name="amount">Amount</string>
+    <string name="arrears">Days in arrears</string>
 
     //SIGNUP
     <string name="signup_title">SIGN UP</string>

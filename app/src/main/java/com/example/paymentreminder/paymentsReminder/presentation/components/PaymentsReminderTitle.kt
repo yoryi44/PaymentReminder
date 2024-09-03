@@ -19,6 +19,7 @@ import com.example.paymentreminder.R
 @Composable
 fun PaymentListItemTitle(
     modifier: Modifier = Modifier,
+    amount: Double,
 ) {
     Row(modifier = modifier
         .fillMaxWidth()
@@ -28,7 +29,7 @@ fun PaymentListItemTitle(
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically) {
         Text(
-            text = "$20.000",
+            text = "$amount",
             fontSize = MaterialTheme.typography.titleMedium.fontSize,
             color = Color.White
         )
