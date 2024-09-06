@@ -32,13 +32,13 @@ class PaymentsReminderViewModel @Inject constructor(
             is PaymentsReminderEvent.OnFilter -> {
 
                 var filtro = "";
-                if((event.filter.equals("Amount")) || event.filter.equals("Valor"))
+                if((event.filter == "Amount") || event.filter == "Valor")
                 {
                     filtro = "amount"
                 }
                 else
                 {
-                    filtro = "arrears"
+                    filtro = "dueDate"
                 }
                 getPaymentsReminderSearch(state.search, filtro)
             }

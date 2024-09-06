@@ -1,5 +1,7 @@
 package com.example.paymentreminder.paymentsReminder.presentation
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -28,6 +30,7 @@ import com.example.paymentreminder.core.presentation.PaymentRemainderDropDwonMen
 import com.example.paymentreminder.core.presentation.PaymentReminderTextField
 import com.example.paymentreminder.paymentsReminder.presentation.components.PaymentsReminderItem
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun PaymentsReminderScreen(
     modifier: Modifier = Modifier,

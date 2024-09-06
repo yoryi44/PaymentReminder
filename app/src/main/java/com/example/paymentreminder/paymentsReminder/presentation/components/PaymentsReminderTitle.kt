@@ -15,11 +15,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
 import com.example.paymentreminder.R
+import java.time.LocalDate
 
 @Composable
 fun PaymentListItemTitle(
     modifier: Modifier = Modifier,
     amount: Double,
+    date: LocalDate
 ) {
     Row(modifier = modifier
         .fillMaxWidth()
@@ -34,7 +36,7 @@ fun PaymentListItemTitle(
             color = Color.White
         )
         Text(
-            text = "Dias atrasados: 3",
+            text = "Dias atrasados: $date",
             fontSize = MaterialTheme.typography.titleMedium.fontSize,
             color = Color.White
         )

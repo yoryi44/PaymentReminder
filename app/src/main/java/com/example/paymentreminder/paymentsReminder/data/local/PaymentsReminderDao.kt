@@ -19,7 +19,8 @@ interface PaymentsReminderDao {
     @Query("SELECT * FROM PaymentsReminderEntity " +
             "WHERE notes LIKE '%' || :searchQuery || '%' " +
             "OR amount LIKE '%' || :searchQuery || '%' " +
-            "ORDER BY :orderBy DESC"
+            "ORDER BY " +
+            "CASE WHEN :orderBy = 'amount' THEN amount ELSE dueDate END DESC"
     )
     fun getPaymentsReminderSearch(searchQuery: String, orderBy: String): Flow<List<PaymentsReminderEntity>>
 
