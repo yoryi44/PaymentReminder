@@ -30,11 +30,11 @@ import com.example.paymentreminder.core.presentation.PaymentRemainderDropDwonMen
 import com.example.paymentreminder.core.presentation.PaymentReminderTextField
 import com.example.paymentreminder.paymentsReminder.presentation.components.PaymentsReminderItem
 
-@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun PaymentsReminderScreen(
     modifier: Modifier = Modifier,
     paymentsReminderViewModel: PaymentsReminderViewModel = hiltViewModel(),
+    onPaymentReminderDetail: (Int) -> Unit
 ) {
 
     val focusManager = LocalFocusManager.current

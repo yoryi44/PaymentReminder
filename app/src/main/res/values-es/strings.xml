@@ -34,6 +34,7 @@
     <string name="search">Buscar</string>
     <string name="amount">Valor</string>
     <string name="arrears">Días mora</string>
+    <string name="days_next_payment">Días para el proximo pago</string>
 
     //SIGNUP
     <string name="signup_title">REGISTRO</string>

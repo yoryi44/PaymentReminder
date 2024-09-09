@@ -1,9 +1,14 @@
 package com.example.paymentreminder.paymentsReminder.data.mapper
 
+import android.annotation.SuppressLint
+import com.example.paymentreminder.extensionFunctions.toLocalDate
 import com.example.paymentreminder.paymentsReminder.data.local.entity.PaymentsReminderEntity
 import com.example.paymentreminder.paymentsReminder.data.remote.dto.PaymentsReminderResponse
 import com.example.paymentreminder.paymentsReminder.models.PaymentReminder
+import java.time.LocalDate
+import java.time.Period
 
+@SuppressLint("NewApi")
 fun PaymentsReminderResponse.toDomain() : List<PaymentReminder>{
     return this.map {
         val paymentReminder = PaymentReminder(
@@ -16,7 +21,8 @@ fun PaymentsReminderResponse.toDomain() : List<PaymentReminder>{
             status = it.status,
             notes = it.notes,
             createdAt = it.createdAt,
-            updatedAt = it.updatedAt
+            updatedAt = it.updatedAt,
+            arrears = Period.between(it.dueDate.toLocalDate(), LocalDate.now()).days
         )
         paymentReminder
     }
@@ -37,6 +43,7 @@ fun PaymentReminder.toEntity() : PaymentsReminderEntity {
         )
 }
 
+@SuppressLint("NewApi")
 fun PaymentsReminderEntity.toDomain() : PaymentReminder {
     return PaymentReminder(
         id = id,
@@ -48,6 +55,7 @@ fun PaymentsReminderEntity.toDomain() : PaymentReminder {
         status = status,
         notes = notes ?: "",
         createdAt = createdAt,
-        updatedAt = updatedAt
+        updatedAt = updatedAt,
+        arrears = Period.between(dueDate.toLocalDate(), LocalDate.now()).days
     )
 }

@@ -34,6 +34,8 @@
     <string name="search">Search</string>
     <string name="amount">Amount</string>
     <string name="arrears">Days in arrears</string>
+    <string name="days_next_payment">Days to next payment</string>
+
 
     //SIGNUP
     <string name="signup_title">SIGN UP</string>

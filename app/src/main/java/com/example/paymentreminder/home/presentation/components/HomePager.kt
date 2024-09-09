@@ -1,5 +1,7 @@
 package com.example.paymentreminder.home.presentation.components
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -16,7 +18,8 @@ import com.google.accompanist.pager.PagerState
 @Composable
 fun HomePager(
     pagerState: PagerState,
-    padding: PaddingValues
+    padding: PaddingValues,
+    onPaymentReminderDetail: (Int) -> Unit
 ) {
 
     //PAGER PANTALLAS
@@ -28,12 +31,14 @@ fun HomePager(
             .fillMaxSize()
     ) { index ->
         when (index) {
-            0 -> PaymentsReminderScreen()
+            0 -> PaymentsReminderScreen {
+                onPaymentReminderDetail(it)
+            }
             1 -> LoginScreen(
                 onLoginSuccess = { /*TODO*/ },
                 onCreateAccount = { /*TODO*/ }
             )
-            2 -> SignupScreen(){}
+            2 -> SignupScreen {/*TODO*/}
         }
     }
 }

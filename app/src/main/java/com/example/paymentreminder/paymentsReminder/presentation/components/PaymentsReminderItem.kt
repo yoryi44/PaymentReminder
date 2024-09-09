@@ -16,7 +16,6 @@ import androidx.compose.ui.unit.dp
 import com.example.paymentreminder.extensionFunctions.toLocalDate
 import com.example.paymentreminder.paymentsReminder.models.PaymentReminder
 
-@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun PaymentsReminderItem(
     modifier: Modifier = Modifier,
@@ -33,7 +32,7 @@ fun PaymentsReminderItem(
         shape = RoundedCornerShape(8.dp),
         elevation = CardDefaults.cardElevation(4.dp),
     ) {
-        PaymentListItemTitle(amount = paymentReminder.amount, date = paymentReminder.dueDate.toLocalDate())
+        PaymentListItemTitle(amount = paymentReminder.amount, arrears = paymentReminder.arrears)
         PaymentListItemBody(paymentReminder = paymentReminder)
     }
 }

@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.paymentreminder.authentication.presentation.login.LoginScreen
 import com.example.paymentreminder.authentication.presentation.signup.SignupScreen
+import com.example.paymentreminder.detail.presentation.DetailScreen
 import com.example.paymentreminder.home.presentation.HomeScreen
 import com.example.paymentreminder.onboarding.presentation.OnboardingScreen
 
@@ -52,7 +53,16 @@ fun NavigationHost(
 
         //HOME
         composable(NavigationRoute.Home.route) {
-            HomeScreen()
+            HomeScreen(
+                onPaymentReminderDatil = {
+                    navHostController.navigate(NavigationRoute.Detail.route)
+                }
+            )
+        }
+
+        //DETAIL
+        composable(NavigationRoute.Detail.route) {
+            DetailScreen()
         }
     }
 }

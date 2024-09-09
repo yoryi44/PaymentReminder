@@ -10,5 +10,6 @@ data class PaymentReminder(
     val status: String,        // Estado del pago (pending, paid, overdue)
     val notes: String?,        // Notas adicionales
     val createdAt: String,     // Fecha de creación del recordatorio
-    val updatedAt: String      // Fecha de última actualización del recordatorio
+    val updatedAt: String,     // Fecha de última actualización del recordatorio
+    val arrears: Int           // Dias en mora
 )
