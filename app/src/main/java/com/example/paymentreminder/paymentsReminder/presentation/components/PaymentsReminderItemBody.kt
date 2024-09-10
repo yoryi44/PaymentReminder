@@ -20,13 +20,14 @@ fun PaymentListItemBody(
     modifier: Modifier = Modifier,
     paymentReminder: PaymentReminder
 ) {
+
+    //ITEM LIST BODY
     Row(
         modifier = modifier
             .fillMaxWidth()
             .height(80.dp)
             .background(Color.White)
     ) {
-//        Text(text = paymentReminder.reminderDate, Modifier.weight(0.3f))
         Text(
             text = paymentReminder.notes ?: "",
             Modifier

@@ -16,7 +16,6 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.paymentreminder.R
-import java.time.LocalDate
 
 @Composable
 fun PaymentListItemTitle(
@@ -25,34 +24,37 @@ fun PaymentListItemTitle(
     arrears: Int
 ) {
 
-    var backgroundColor = colorResource(R.color.danger)
-    var title = "";
+    //COLOR OF ITEM LIST AND TITLE
+    val backgroundColor: Color
+    val title: String
 
-        when {
-        arrears < 0 ->
-        {
-            backgroundColor = colorResource(R.color.danger)
-            title = "${stringResource(R.string.arrears)} ${arrears*-1}"
-        }
-        arrears > 3 ->
-        {
+    when {
+        arrears < 0 -> {
             backgroundColor = colorResource(R.color.success)
-            title = "${stringResource(R.string.days_next_payment)} $arrears"
+            title = "${stringResource(R.string.days_next_payment)} ${arrears * -1}"
         }
-        else ->
-        {
+
+        arrears > 3 -> {
+            backgroundColor = colorResource(R.color.danger)
+            title = "${stringResource(R.string.arrears)} $arrears"
+        }
+
+        else -> {
             backgroundColor = colorResource(R.color.warning)
             title = "${stringResource(R.string.days_next_payment)} $arrears"
         }
     }
 
-    Row(modifier = modifier
-        .fillMaxWidth()
-        .background(color = backgroundColor)
-        .height(40.dp)
-        .padding(10.dp),
+    //TITLE OF ITEM LIST
+    Row(
+        modifier = modifier
+            .fillMaxWidth()
+            .background(color = backgroundColor)
+            .height(40.dp)
+            .padding(10.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically) {
+        verticalAlignment = Alignment.CenterVertically
+    ) {
         Text(
             text = "$amount",
             fontSize = MaterialTheme.typography.titleMedium.fontSize,

@@ -10,6 +10,7 @@ import com.example.paymentreminder.paymentsReminder.domain.repository.PaymentsRe
 import com.example.paymentreminder.paymentsReminder.domain.usecase.GetPaymentsReminderSearchUseCase
 import com.example.paymentreminder.paymentsReminder.domain.usecase.GetPaymentsReminderUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -20,6 +21,7 @@ class PaymentsReminderViewModel @Inject constructor(
     private val getPaymentsReminderSearchUseCase: GetPaymentsReminderSearchUseCase
 ) : ViewModel() {
 
+    
     var state by mutableStateOf(PaymentsReminderState())
         private set
 
@@ -31,14 +33,10 @@ class PaymentsReminderViewModel @Inject constructor(
         when (event) {
             is PaymentsReminderEvent.OnFilter -> {
 
-                var filtro = "";
-                if((event.filter == "Amount") || event.filter == "Valor")
-                {
-                    filtro = "amount"
-                }
-                else
-                {
-                    filtro = "dueDate"
+                val filtro = if((event.filter == "Amount") || event.filter == "Valor") {
+                    "amount"
+                } else {
+                    "dueDate"
                 }
                 getPaymentsReminderSearch(state.search, filtro)
             }

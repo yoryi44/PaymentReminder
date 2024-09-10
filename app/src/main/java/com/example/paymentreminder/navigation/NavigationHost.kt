@@ -54,7 +54,7 @@ fun NavigationHost(
         //HOME
         composable(NavigationRoute.Home.route) {
             HomeScreen(
-                onPaymentReminderDatil = {
+                onPaymentReminderDetail = {
                     navHostController.navigate(NavigationRoute.Detail.route)
                 }
             )

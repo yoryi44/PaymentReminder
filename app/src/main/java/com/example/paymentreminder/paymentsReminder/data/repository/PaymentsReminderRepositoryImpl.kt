@@ -18,7 +18,7 @@ class PaymentsReminderRepositoryImpl(
     private val paymentsReminderDao: PaymentsReminderDao
 ) : PaymentsReminderRepository {
 
-    override fun getPaymentsReminder() : Flow<List<PaymentReminder>> {
+    override suspend fun getPaymentsReminder() : Flow<List<PaymentReminder>> {
         val localFlow = paymentsReminderDao.getAllPaymentsReminder()
             .map { paymentsReminder -> paymentsReminder.map { it.toDomain() } }
 
@@ -27,7 +27,7 @@ class PaymentsReminderRepositoryImpl(
         return localFlow.combine(apiFlow) { db, api -> db }
     }
 
-    override fun getPaymentsReminderSearch(searchQuery: String, orderBy: String): Flow<List<PaymentReminder>> {
+    override suspend fun getPaymentsReminderSearch(searchQuery: String, orderBy: String): Flow<List<PaymentReminder>> {
         return paymentsReminderDao.getPaymentsReminderSearch(searchQuery, orderBy).map {
             paymentsReminder -> paymentsReminder.map { it.toDomain() }
         };

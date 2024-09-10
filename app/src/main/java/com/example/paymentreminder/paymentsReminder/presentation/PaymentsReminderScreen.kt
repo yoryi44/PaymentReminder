@@ -54,6 +54,8 @@ fun PaymentsReminderScreen(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
+
+            //SEARCH TEXTFIELD
             PaymentReminderTextField(
                 modifier = Modifier.fillMaxWidth(0.9f),
                 label = stringResource(id = R.string.search),
@@ -71,11 +73,14 @@ fun PaymentsReminderScreen(
             ) {
                 paymentsReminderViewModel.onEvent(PaymentsReminderEvent.SearchChanged(it))
             }
+
+            //FILTER DROPDOWN MENU
             PaymentRemainderDropDwonMenu(modifier = modifier, "Filter", options) {
                 paymentsReminderViewModel.onEvent(PaymentsReminderEvent.OnFilter(it))
             }
         }
 
+        //LIST OF PAYMENS REMINDERS
         LazyColumn(
             modifier = Modifier
                 .background(colorResource(id = R.color.ligth_gray))
@@ -84,6 +89,8 @@ fun PaymentsReminderScreen(
             contentPadding = PaddingValues(16.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
+
+            //ITEMS LIST
             items(state.paymentsReminder.size) { item ->
                 PaymentsReminderItem(paymentReminder = state.paymentsReminder[item]) {
                     paymentsReminderViewModel.onEvent(PaymentsReminderEvent.OnItemEdit(state.paymentsReminder[item].id))

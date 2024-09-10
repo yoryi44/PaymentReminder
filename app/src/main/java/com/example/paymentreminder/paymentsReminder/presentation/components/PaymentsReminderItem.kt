@@ -23,6 +23,7 @@ fun PaymentsReminderItem(
     onClick : () -> Unit
 ) {
 
+    //ITEM LIST
     Card(
         modifier = modifier
             .fillMaxWidth()

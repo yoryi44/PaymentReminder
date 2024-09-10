@@ -53,7 +53,7 @@ fun LoginForm(state: LoginState, onEvent: (LoginEvent) -> Unit) {
                     )
                 }),
                 keyboardOptions = KeyboardOptions(
-                    autoCorrect = false,
+                    autoCorrectEnabled = false,
                     keyboardType = KeyboardType.Email,
                     imeAction = ImeAction.Next
                 ),

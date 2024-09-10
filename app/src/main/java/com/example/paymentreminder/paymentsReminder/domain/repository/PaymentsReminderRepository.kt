@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface PaymentsReminderRepository {
 
-    fun getPaymentsReminder() : Flow<List<PaymentReminder>>
-    fun getPaymentsReminderSearch(searchQuery: String, orderBy: String) : Flow<List<PaymentReminder>>
+    suspend fun getPaymentsReminder() : Flow<List<PaymentReminder>>
+    suspend fun getPaymentsReminderSearch(searchQuery: String, orderBy: String) : Flow<List<PaymentReminder>>
     suspend fun insertPaymentsReminder (paymentsReminder : List<PaymentReminder>)
 }

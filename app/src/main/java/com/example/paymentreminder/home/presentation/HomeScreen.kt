@@ -1,7 +1,5 @@
 package com.example.paymentreminder.home.presentation
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Add
@@ -20,7 +18,7 @@ import com.google.accompanist.pager.rememberPagerState
 @OptIn(ExperimentalPagerApi::class)
 @Composable
 fun HomeScreen(
-    onPaymentReminderDatil: (Int) -> Unit
+    onPaymentReminderDetail: (Int) -> Unit
 ) {
 
     val pagerState = rememberPagerState()
@@ -35,7 +33,7 @@ fun HomeScreen(
         //BOTON PARA CREAR NUEVO RECORADTORIO
         floatingActionButton = {
             FloatingActionButton(
-                onClick = { onPaymentReminderDatil(-1) },
+                onClick = { onPaymentReminderDetail(-1) },
                 containerColor = colorResource(id = R.color.warning),
                 shape = CircleShape
             ) {
@@ -50,7 +48,7 @@ fun HomeScreen(
 
         //VIEW PAGER
         HomePager(pagerState, padding) {
-            onPaymentReminderDatil(it)
+            onPaymentReminderDetail(it)
         }
     }
 }
@@ -58,7 +56,6 @@ fun HomeScreen(
 @Preview
 @Composable
 fun HomeScreenPreview() {
-    HomeScreen(){
-
+    HomeScreen {
     }
 }

@@ -2,9 +2,9 @@ package com.example.paymentreminder.navigation
 
 sealed class NavigationRoute(val route: String)
 {
-    object Onboarding : NavigationRoute("onboarding")
-    object Login : NavigationRoute("login")
-    object Signup : NavigationRoute("signup")
-    object Home : NavigationRoute("home")
-    object Detail : NavigationRoute("detail")
+    data object Onboarding : NavigationRoute("onboarding")
+    data object Login : NavigationRoute("login")
+    data object Signup : NavigationRoute("signup")
+    data object Home : NavigationRoute("home")
+    data object Detail : NavigationRoute("detail")
 }
