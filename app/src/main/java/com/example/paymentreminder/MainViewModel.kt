@@ -11,13 +11,23 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor (
-    private val hasSeenOnboardingUseCase: HasSeenOnboardingUseCase,
-    private val getUserIdUseCase: GetUserIdUseCase
+    hasSeenOnboardingUseCase: HasSeenOnboardingUseCase,
+    getUserIdUseCase: GetUserIdUseCase
 ) : ViewModel() {
 
-    var hasSeenOnboarding by mutableStateOf(hasSeenOnboardingUseCase())
+    var hasSeenOnboarding by mutableStateOf(false)
         private set
 
-    var isLoggedIn by mutableStateOf(getUserIdUseCase() != null)
+    var isLoggedIn by mutableStateOf(false)
+        private set
+
+    var isLoading by mutableStateOf(true)
+        private set
+
+    init {
+        hasSeenOnboarding = hasSeenOnboardingUseCase()
+        isLoggedIn = getUserIdUseCase() != null
+        isLoading = false
+    }
 
 }

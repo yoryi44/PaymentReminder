@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 data class PaymentsReminderEntity(
     @PrimaryKey(autoGenerate = false)
     val id: String,
-    val amount: Double,
+    val amount: String,
     val createdAt: String,
     val currency: String,
     val dueDate: String,

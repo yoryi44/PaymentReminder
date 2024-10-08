@@ -79,6 +79,9 @@ class LoginViewModel @Inject constructor(
                         state = state.copy(
                             emailError = it.message!!
                         )
+                        state = state.copy(
+                            isLoading = false
+                        )
                     }
             }
         } else {

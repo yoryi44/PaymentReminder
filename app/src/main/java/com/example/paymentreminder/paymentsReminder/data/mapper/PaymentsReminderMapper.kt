@@ -4,27 +4,29 @@ import android.annotation.SuppressLint
 import com.example.paymentreminder.extensionFunctions.toLocalDate
 import com.example.paymentreminder.paymentsReminder.data.local.entity.PaymentsReminderEntity
 import com.example.paymentreminder.paymentsReminder.data.remote.dto.PaymentsReminderResponse
-import com.example.paymentreminder.paymentsReminder.models.PaymentReminder
+import com.example.paymentreminder.paymentsReminder.presentation.models.PaymentReminder
 import java.time.LocalDate
 import java.time.Period
+import java.time.temporal.ChronoUnit
 
 @SuppressLint("NewApi")
 fun PaymentsReminderResponse.toDomain() : List<PaymentReminder>{
     return this.map {
-        val paymentReminder = PaymentReminder(
-            id = it.id,
-            userId = it.userId,
-            amount = it.amount,
-            currency = it.currency,
-            dueDate = it.dueDate,
-            reminderDate = it.reminderDate,
-            status = it.status,
-            notes = it.notes,
-            createdAt = it.createdAt,
-            updatedAt = it.updatedAt,
-            arrears = Period.between(it.dueDate.toLocalDate(), LocalDate.now()).days
+        val id = it.key
+        val payment = it.value
+        PaymentReminder(
+            id = id,
+            userId = payment.userId,
+            amount = payment.amount,
+            currency = payment.currency,
+            dueDate = payment.dueDate,
+            reminderDate = payment.reminderDate,
+            status = payment.status,
+            notes = payment.notes,
+            createdAt = payment.createdAt,
+            updatedAt = payment.updatedAt,
+            arrears = Period.between(payment.dueDate.toLocalDate(), LocalDate.now()).days
         )
-        paymentReminder
     }
 }
 
@@ -43,7 +45,6 @@ fun PaymentReminder.toEntity() : PaymentsReminderEntity {
         )
 }
 
-@SuppressLint("NewApi")
 fun PaymentsReminderEntity.toDomain() : PaymentReminder {
     return PaymentReminder(
         id = id,
@@ -53,9 +54,9 @@ fun PaymentsReminderEntity.toDomain() : PaymentReminder {
         dueDate = dueDate,
         reminderDate = reminderDate,
         status = status,
-        notes = notes ?: "",
+        notes = notes,
         createdAt = createdAt,
         updatedAt = updatedAt,
-        arrears = Period.between(dueDate.toLocalDate(), LocalDate.now()).days
+        arrears = ChronoUnit.DAYS.between(dueDate.toLocalDate(), LocalDate.now()).toInt()
     )
 }

@@ -1,6 +1,6 @@
 package com.example.paymentreminder.authentication.domain.usecase
 
-class ValidatePasswordUseCase() {
+class ValidatePasswordUseCase {
     operator fun invoke(password: String): PaswordResult {
         if(password.length < 8)
         {

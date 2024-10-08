@@ -9,7 +9,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.paymentreminder.authentication.domain.usecase.SignupWhitEmailUserCase
 import com.example.paymentreminder.authentication.domain.usecase.ValidateEmailUseCase
 import com.example.paymentreminder.authentication.domain.usecase.ValidatePasswordUseCase
-import com.example.paymentreminder.authentication.presentation.login.LoginEvent
 import com.example.paymentreminder.authentication.presentation.util.ParserErrorPassword
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch

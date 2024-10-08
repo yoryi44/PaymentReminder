@@ -1,7 +1,5 @@
 package com.example.paymentreminder.paymentsReminder.presentation
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -28,13 +26,14 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.paymentreminder.R
 import com.example.paymentreminder.core.presentation.PaymentRemainderDropDwonMenu
 import com.example.paymentreminder.core.presentation.PaymentReminderTextField
+import com.example.paymentreminder.core.presentation.PaymentreminderCircularProgressIndicator
 import com.example.paymentreminder.paymentsReminder.presentation.components.PaymentsReminderItem
 
 @Composable
 fun PaymentsReminderScreen(
     modifier: Modifier = Modifier,
     paymentsReminderViewModel: PaymentsReminderViewModel = hiltViewModel(),
-    onPaymentReminderDetail: (Int) -> Unit
+    onPaymentReminderDetail: (String) -> Unit
 ) {
 
     val focusManager = LocalFocusManager.current
@@ -66,7 +65,7 @@ fun PaymentsReminderScreen(
                     focusManager.clearFocus()
                 }),
                 keyboardOptions = KeyboardOptions(
-                    autoCorrect = false,
+                    autoCorrectEnabled = false,
                     keyboardType = KeyboardType.Text,
                     imeAction = ImeAction.Search
                 ),
@@ -80,23 +79,29 @@ fun PaymentsReminderScreen(
             }
         }
 
-        //LIST OF PAYMENS REMINDERS
-        LazyColumn(
-            modifier = Modifier
-                .background(colorResource(id = R.color.ligth_gray))
-                .fillMaxWidth()
-                .weight(1f),
-            contentPadding = PaddingValues(16.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
-        ) {
+        if(state.isLoading)
+        {
+            PaymentreminderCircularProgressIndicator()
+        }
+        else
+        {
+            //LIST OF PAYMENS REMINDERS
+            LazyColumn(
+                modifier = Modifier
+                    .background(colorResource(id = R.color.ligth_gray))
+                    .fillMaxWidth()
+                    .weight(1f),
+                contentPadding = PaddingValues(16.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
 
-            //ITEMS LIST
-            items(state.paymentsReminder.size) { item ->
-                PaymentsReminderItem(paymentReminder = state.paymentsReminder[item]) {
-                    paymentsReminderViewModel.onEvent(PaymentsReminderEvent.OnItemEdit(state.paymentsReminder[item].id))
+                //ITEMS LIST
+                items(state.paymentsReminder.size) { item ->
+                    PaymentsReminderItem(paymentReminder = state.paymentsReminder[item]) {
+                        onPaymentReminderDetail(state.paymentsReminder[item].id)
+                    }
                 }
             }
         }
-
     }
 }

@@ -1,3 +1,3 @@
 package com.example.paymentreminder.paymentsReminder.data.remote.dto
 
-typealias PaymentsReminderResponse = List<PaymentsReminderDto>
+typealias PaymentsReminderResponse = Map<String,PaymentsReminderDto>

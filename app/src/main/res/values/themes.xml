@@ -2,4 +2,10 @@
 <resources>
 
     <style name="Theme.PaymentReminder" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <style name="Theme.App.SplashScreen" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@android:color/white</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/bakcground_login</item>
+        <item name="postSplashScreenTheme">@style/Theme.PaymentReminder</item>
+    </style>
 </resources>

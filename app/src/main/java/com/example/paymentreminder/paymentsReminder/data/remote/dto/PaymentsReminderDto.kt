@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class PaymentsReminderDto(
     @SerializedName("id") val id: String,
-    @SerializedName("amount") val amount: Double,
+    @SerializedName("amount") val amount: String,
     @SerializedName("createdAt") val createdAt: String,
     @SerializedName("currency") val currency: String,
     @SerializedName("dueDate") val dueDate: String,

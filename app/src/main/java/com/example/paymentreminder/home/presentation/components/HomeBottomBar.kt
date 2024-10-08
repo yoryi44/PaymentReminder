@@ -1,14 +1,16 @@
 package com.example.paymentreminder.home.presentation.components
 
-import androidx.compose.material.BottomNavigation
+import androidx.compose.foundation.layout.height
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.Icon
+import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -26,10 +28,10 @@ fun HomeBottomBar(pagerState: PagerState) {
     val corroutineScope = rememberCoroutineScope()
 
     //BOTTOM BAR NAVIGATION
-    BottomNavigation(
-        backgroundColor = colorResource(id = R.color.blue_700),
+    NavigationBar (
+        containerColor = colorResource(id = R.color.blue_700),
         contentColor = Color.White,
-        elevation = 10.dp
+        tonalElevation = 8.dp,
     ) {
 
         //OPCION HOME
@@ -39,7 +41,7 @@ fun HomeBottomBar(pagerState: PagerState) {
             colors = NavigationBarItemDefaults.colors(
                 selectedIconColor = Color.White,
                 selectedTextColor = Color.White,
-                indicatorColor = colorResource(id = R.color.blue_500),
+                indicatorColor = colorResource(id = R.color.blue_700),
                 unselectedIconColor = Color.White,
                 unselectedTextColor = Color.White
             ),
@@ -60,11 +62,11 @@ fun HomeBottomBar(pagerState: PagerState) {
         //OPCION STADISTICS
         NavigationBarItem(
             alwaysShowLabel = false,
-            selected = pagerState.currentPage == 2,
+            selected = pagerState.currentPage == 1,
             colors = NavigationBarItemDefaults.colors(
                 selectedIconColor = Color.White,
                 selectedTextColor = Color.White,
-                indicatorColor = colorResource(id = R.color.blue_500),
+                indicatorColor = colorResource(id = R.color.blue_700),
                 unselectedIconColor = Color.White,
                 unselectedTextColor = Color.White
             ),

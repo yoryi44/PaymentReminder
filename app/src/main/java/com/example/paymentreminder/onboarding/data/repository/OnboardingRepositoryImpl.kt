@@ -1,8 +1,6 @@
 package com.example.paymentreminder.onboarding.data.repository
 
 import android.content.SharedPreferences
-import android.os.Build
-import androidx.annotation.RequiresApi
 import com.example.paymentreminder.onboarding.domain.repository.OnboardingRepository
 
 class OnboardingRepositoryImpl(

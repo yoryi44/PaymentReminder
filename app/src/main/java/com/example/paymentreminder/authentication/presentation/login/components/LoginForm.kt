@@ -3,7 +3,6 @@ package com.example.paymentreminder.authentication.presentation.login.components
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -72,7 +71,7 @@ fun LoginForm(state: LoginState, onEvent: (LoginEvent) -> Unit) {
                     focusManager.clearFocus()
                 }),
                 keyboardOptions = KeyboardOptions(
-                    autoCorrect = false,
+                    autoCorrectEnabled = false,
                     keyboardType = KeyboardType.Password,
                     imeAction = ImeAction.Done
                 ),

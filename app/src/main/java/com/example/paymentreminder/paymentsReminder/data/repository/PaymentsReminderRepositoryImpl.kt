@@ -6,7 +6,7 @@ import com.example.paymentreminder.paymentsReminder.data.mapper.toDomain
 import com.example.paymentreminder.paymentsReminder.data.mapper.toEntity
 import com.example.paymentreminder.paymentsReminder.data.remote.PaymentsReminderApi
 import com.example.paymentreminder.paymentsReminder.domain.repository.PaymentsReminderRepository
-import com.example.paymentreminder.paymentsReminder.models.PaymentReminder
+import com.example.paymentreminder.paymentsReminder.presentation.models.PaymentReminder
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flow
@@ -30,17 +30,15 @@ class PaymentsReminderRepositoryImpl(
     override suspend fun getPaymentsReminderSearch(searchQuery: String, orderBy: String): Flow<List<PaymentReminder>> {
         return paymentsReminderDao.getPaymentsReminderSearch(searchQuery, orderBy).map {
             paymentsReminder -> paymentsReminder.map { it.toDomain() }
-        };
+        }
     }
 
     private fun getHabitsFromApi() : Flow<List<PaymentReminder>> {
         return flow {
-
             resultOf {
-                val paymentsReminder = paymentsReminderApi.getAllHabits().toDomain()
+                val paymentsReminder = paymentsReminderApi.getAllHabits().toDomain().sortedBy { it.createdAt }
                 insertPaymentsReminder(paymentsReminder)
             }
-
             emit(emptyList<PaymentReminder>())
 
         }.onStart {
@@ -50,7 +48,7 @@ class PaymentsReminderRepositoryImpl(
 
     override suspend fun insertPaymentsReminder(paymentsReminder: List<PaymentReminder>) {
         paymentsReminder.forEach {
-            paymentsReminderDao.insertPaymentsReminder(it.toEntity())
+            paymentsReminderDao.insertPaymentReminder(it.toEntity())
         }
     }
 }

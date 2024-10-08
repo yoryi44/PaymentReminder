@@ -1,6 +1,5 @@
 package com.example.paymentreminder.authentication.presentation.util
 
-import androidx.compose.ui.res.stringResource
 import com.example.paymentreminder.R
 import com.example.paymentreminder.authentication.domain.usecase.PaswordResult
 

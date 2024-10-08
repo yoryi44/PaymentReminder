@@ -9,3 +9,6 @@
 local.properties
 /.idea/
 .idea/other.xml
+.idea/deploymentTargetSelector.xml
+.idea/inspectionProfiles/Project_Default.xml
+app/src/androidTest/java/com/example/paymentreminder/ExampleInstrumentedTest.kt

@@ -40,4 +40,10 @@
     <string name="signup_title">REGISTRO</string>
     <string name="signup">Regístrate</string>
     <string name="signup_subtitle">crea una cuenta y disfruta de todos nuestros beneficios!</string>
+
+    //DETAIL
+    <string name="detail_title">Detalles del pago</string>
+    <string name="notes">Observaciones</string>
+    <string name="due_date">Fecha de pago</string>
+
 </resources>

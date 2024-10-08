@@ -6,11 +6,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.paymentreminder.paymentsReminder.domain.repository.PaymentsReminderRepository
 import com.example.paymentreminder.paymentsReminder.domain.usecase.GetPaymentsReminderSearchUseCase
 import com.example.paymentreminder.paymentsReminder.domain.usecase.GetPaymentsReminderUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -21,9 +20,10 @@ class PaymentsReminderViewModel @Inject constructor(
     private val getPaymentsReminderSearchUseCase: GetPaymentsReminderSearchUseCase
 ) : ViewModel() {
 
-    
     var state by mutableStateOf(PaymentsReminderState())
         private set
+
+    private var currentDayJob: Job? = null
 
     init {
         getPaymentsReminder()
@@ -33,7 +33,7 @@ class PaymentsReminderViewModel @Inject constructor(
         when (event) {
             is PaymentsReminderEvent.OnFilter -> {
 
-                val filtro = if((event.filter == "Amount") || event.filter == "Valor") {
+                val filtro = if ((event.filter == "Amount") || event.filter == "Valor") {
                     "amount"
                 } else {
                     "dueDate"
@@ -57,24 +57,44 @@ class PaymentsReminderViewModel @Inject constructor(
         }
     }
 
-    private fun getPaymentsReminderSearch(searchQuery: String, orderBy : String) {
-        viewModelScope.launch {
+    private fun getPaymentsReminderSearch(searchQuery: String, orderBy: String) {
+
+        currentDayJob?.cancel()
+        currentDayJob = viewModelScope.launch {
+
+            isLoading()
+
             getPaymentsReminderSearchUseCase(searchQuery, orderBy).collectLatest {
                 state = state.copy(
-                    paymentsReminder = it
+                    paymentsReminder = it,
+                    isLoading = false
+                )
+            }
+
+        }
+    }
+
+    private fun getPaymentsReminder() {
+
+        currentDayJob?.cancel()
+        currentDayJob = viewModelScope.launch {
+
+            isLoading()
+
+            getPaymentsReminderUseCase().collectLatest {
+                Log.d("emitio", "Emitio")
+                state = state.copy(
+                    paymentsReminder = it,
+                    isLoading = false
                 )
             }
         }
     }
 
-    private fun getPaymentsReminder() {
-        viewModelScope.launch {
-            getPaymentsReminderUseCase().collectLatest {
-                state = state.copy(
-                    paymentsReminder = it
-                )
-            }
-        }
+    private fun isLoading() {
+        state = state.copy(
+            isLoading = true
+        )
     }
 
 }

@@ -42,4 +42,9 @@
     <string name="signup">Sign up</string>
     <string name="signup_subtitle">create an account and enjoy all our benefits!</string>
 
+    //DETAIL
+    <string name="detail_title">Payment Reminder Detail</string>
+    <string name="notes">Notes</string>
+    <string name="due_date">Due date</string>
+
 </resources>

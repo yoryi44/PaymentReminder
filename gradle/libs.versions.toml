@@ -7,12 +7,15 @@ junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 lifecycleRuntimeKtx = "2.8.5"
 activityCompose = "1.9.2"
-composeBom = "2024.09.00"
+composeBom = "2024.09.01"
 constraintlayoutComposeVersion = "1.0.1"
 googleGmsGoogleServicesVersion = "4.4.2"
 kspVersion = "1.9.23-1.0.19"
 jetbrainsKotlinJvmVersion = "1.9.23"
 room = "2.6.1"
+
+#SPLASH SCREN
+coreSplashscreen = "1.0.1"
 
 #PAGER
 accompanist_version = "0.28.0"
@@ -51,6 +54,9 @@ androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-toolin
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+
+#SPLASH SCREEN
+androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
 
 #PAGER
 accompanist-pager = { module = "com.google.accompanist:accompanist-pager",version.ref = "accompanist_version" }

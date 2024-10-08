@@ -18,7 +18,7 @@ import com.google.accompanist.pager.rememberPagerState
 @OptIn(ExperimentalPagerApi::class)
 @Composable
 fun HomeScreen(
-    onPaymentReminderDetail: (Int) -> Unit
+    onPaymentReminderDetail: (String) -> Unit
 ) {
 
     val pagerState = rememberPagerState()
@@ -33,7 +33,7 @@ fun HomeScreen(
         //BOTON PARA CREAR NUEVO RECORADTORIO
         floatingActionButton = {
             FloatingActionButton(
-                onClick = { onPaymentReminderDetail(-1) },
+                onClick = { onPaymentReminderDetail("") },
                 containerColor = colorResource(id = R.color.warning),
                 shape = CircleShape
             ) {

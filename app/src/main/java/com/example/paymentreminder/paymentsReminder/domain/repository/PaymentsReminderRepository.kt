@@ -1,6 +1,6 @@
 package com.example.paymentreminder.paymentsReminder.domain.repository
 
-import com.example.paymentreminder.paymentsReminder.models.PaymentReminder
+import com.example.paymentreminder.paymentsReminder.presentation.models.PaymentReminder
 import kotlinx.coroutines.flow.Flow
 
 interface PaymentsReminderRepository {

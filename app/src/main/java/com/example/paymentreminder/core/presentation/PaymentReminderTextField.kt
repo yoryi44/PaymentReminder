@@ -54,7 +54,7 @@ fun PaymentReminderTextField(
             label = { Text(label, color = Color.Gray) },
             placeholder = { if(isPassword) Text("********") },
             leadingIcon = { Icon(imageVector = leadingIcon, contentDescription = "leadingIcon")},
-            keyboardOptions = keyboardOptions,
+            keyboardOptions = keyboardOptions.copy(keyboardType = keyboardType),
             visualTransformation = if (!passwordVisibility && isPassword) PasswordVisualTransformation() else VisualTransformation.None,
             keyboardActions = keyboardActions,
             trailingIcon = {
@@ -76,5 +76,6 @@ fun PaymentReminderTextField(
         if(errorMessaje != null){
             Text(text = errorMessaje, color = Color.Red)
         }
+
     }
 }

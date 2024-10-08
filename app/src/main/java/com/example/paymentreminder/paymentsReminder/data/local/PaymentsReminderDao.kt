@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.example.paymentreminder.detail.data.local.entity.PaymentReminderSyncEntity
 import com.example.paymentreminder.paymentsReminder.data.local.entity.PaymentsReminderEntity
 import kotlinx.coroutines.flow.Flow
 
@@ -11,17 +12,23 @@ import kotlinx.coroutines.flow.Flow
 interface PaymentsReminderDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertPaymentsReminder(paymentsReminderEntity: PaymentsReminderEntity)
+    suspend fun insertPaymentReminder(paymentsReminderEntity: PaymentsReminderEntity)
 
-    @Query("SELECT * FROM PaymentsReminderEntity")
+    @Query("SELECT * FROM PaymentsReminderEntity ORDER BY createdAt DESC")
     fun getAllPaymentsReminder(): Flow<List<PaymentsReminderEntity>>
+
+    @Query("SELECT * FROM PaymentsReminderEntity WHERE id = :id")
+    fun getPaymentReminderById(id: String): PaymentsReminderEntity
 
     @Query("SELECT * FROM PaymentsReminderEntity " +
             "WHERE notes LIKE '%' || :searchQuery || '%' " +
             "OR amount LIKE '%' || :searchQuery || '%' " +
             "ORDER BY " +
-            "CASE WHEN :orderBy = 'amount' THEN amount ELSE dueDate END DESC"
+            "CASE WHEN :orderBy = 'amount' THEN CAST(amount AS INTEGER) ELSE dueDate END ASC"
     )
     fun getPaymentsReminderSearch(searchQuery: String, orderBy: String): Flow<List<PaymentsReminderEntity>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertPaymentReminderSync(habitSyncEntity: PaymentReminderSyncEntity)
 
 }

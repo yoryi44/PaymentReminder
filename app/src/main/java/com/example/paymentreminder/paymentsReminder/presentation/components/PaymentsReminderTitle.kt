@@ -20,7 +20,7 @@ import com.example.paymentreminder.R
 @Composable
 fun PaymentListItemTitle(
     modifier: Modifier = Modifier,
-    amount: Double,
+    amount: String,
     arrears: Int
 ) {
 

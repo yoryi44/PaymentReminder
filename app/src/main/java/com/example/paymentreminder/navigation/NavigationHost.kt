@@ -2,8 +2,10 @@ package com.example.paymentreminder.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 import com.example.paymentreminder.authentication.presentation.login.LoginScreen
 import com.example.paymentreminder.authentication.presentation.signup.SignupScreen
 import com.example.paymentreminder.detail.presentation.DetailScreen
@@ -41,7 +43,7 @@ fun NavigationHost(
             )
         }
 
-        //LOGIN
+        //SIGNUP
         composable(NavigationRoute.Signup.route) {
             SignupScreen(
                 onSignupSuccess = {
@@ -55,14 +57,23 @@ fun NavigationHost(
         composable(NavigationRoute.Home.route) {
             HomeScreen(
                 onPaymentReminderDetail = {
-                    navHostController.navigate(NavigationRoute.Detail.route)
+                    navHostController.navigate(NavigationRoute.Detail.route + "?paymentReminderId=$it")
                 }
             )
         }
 
         //DETAIL
-        composable(NavigationRoute.Detail.route) {
+        composable(NavigationRoute.Detail.route + "?paymentReminderId={paymentReminderId}", arguments = listOf(
+            navArgument("paymentReminderId") {
+                type = NavType.StringType
+                nullable = true
+                defaultValue = null
+            }
+        )) {
             DetailScreen()
+            {
+                navHostController.popBackStack()
+            }
         }
     }
 }

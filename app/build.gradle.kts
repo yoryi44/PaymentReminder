@@ -76,6 +76,9 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
+    //SPLASH SCREEN
+    implementation(libs.androidx.core.splashscreen)
+
     //PAGER
     implementation(libs.accompanist.pager)
     implementation(libs.accompanist.pager.indicators)

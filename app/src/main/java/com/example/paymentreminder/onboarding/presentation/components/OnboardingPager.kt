@@ -1,7 +1,6 @@
 package com.example.paymentreminder.onboarding.presentation.components
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -18,7 +17,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -28,7 +26,6 @@ import com.example.paymentreminder.R
 import com.example.paymentreminder.core.presentation.PaymentRemainderButton
 import com.example.paymentreminder.core.presentation.PaymentReminderSubtitle
 import com.example.paymentreminder.core.presentation.PaymentReminderTitle
-import com.example.paymentreminder.onboarding.presentation.OnboardingEvent
 import com.example.paymentreminder.onboarding.presentation.OnboardingPagerInformation
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
@@ -77,7 +74,7 @@ fun OnboardingPager(
                         .fillMaxWidth(),
                     textAlign = TextAlign.Center
                 )
-                Spacer(Modifier.size(1.dp));
+                Spacer(Modifier.size(1.dp))
                 PaymentReminderSubtitle(
                     subtitle = information.subtitle,
                     modifier = Modifier

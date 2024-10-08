@@ -9,8 +9,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun PaymentreminderCircularProgressIndicator(){
-    Box(modifier = Modifier.fillMaxSize(),
+fun PaymentreminderCircularProgressIndicator(
+    modifier: Modifier = Modifier
+){
+    Box(modifier = modifier.fillMaxSize(),
         contentAlignment = Alignment.Center) {
         CircularProgressIndicator(
             strokeWidth = 5.dp

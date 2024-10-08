@@ -21,7 +21,7 @@ fun OnboardingScreen(
         }
     }
 
-    var pagerlist = listOf(
+    val pagerlist = listOf(
         OnboardingPagerInformation(
             stringResource(id = R.string.welcome),
             stringResource(id = R.string.welcome_subtitle),
