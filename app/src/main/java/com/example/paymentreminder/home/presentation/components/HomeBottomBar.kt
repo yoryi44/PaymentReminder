@@ -3,6 +3,7 @@ package com.example.paymentreminder.home.presentation.components
 import androidx.compose.foundation.layout.height
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -32,6 +33,7 @@ fun HomeBottomBar(pagerState: PagerState) {
         containerColor = colorResource(id = R.color.blue_700),
         contentColor = Color.White,
         tonalElevation = 8.dp,
+        modifier = Modifier.height(40.dp)
     ) {
 
         //OPCION HOME
@@ -77,7 +79,7 @@ fun HomeBottomBar(pagerState: PagerState) {
             },
             icon = {
                 Icon(
-                    painterResource(id = R.drawable.ic_statistics),
+                    Icons.Default.Menu,
                     contentDescription = ""
                 )
             }, label = { Text(text = stringResource(id = R.string.stadistics)) }

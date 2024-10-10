@@ -55,12 +55,12 @@ fun LoginScreen(
     ) {
         //FONDO DE PANTALLA LOGIN
         Image(
-            painter = painterResource(id = R.drawable.bakcground_login),
+            painter = painterResource(id = R.mipmap.login_background),
             contentDescription = null,
             modifier = Modifier
                 .align(Alignment.Center)
                 .graphicsLayer {
-                    alpha = 0.8f  // Ajusta este valor para cambiar la transparencia
+                    alpha = 0.8f
                 },
             contentScale = ContentScale.Fit,
         )

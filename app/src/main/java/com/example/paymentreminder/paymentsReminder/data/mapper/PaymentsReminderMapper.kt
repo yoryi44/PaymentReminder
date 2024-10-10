@@ -1,19 +1,27 @@
 package com.example.paymentreminder.paymentsReminder.data.mapper
 
 import android.annotation.SuppressLint
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.stringResource
+import com.example.paymentreminder.R
 import com.example.paymentreminder.extensionFunctions.toLocalDate
 import com.example.paymentreminder.paymentsReminder.data.local.entity.PaymentsReminderEntity
 import com.example.paymentreminder.paymentsReminder.data.remote.dto.PaymentsReminderResponse
 import com.example.paymentreminder.paymentsReminder.presentation.models.PaymentReminder
+import com.example.paymentreminder.ui.theme.Danger
+import com.example.paymentreminder.ui.theme.Success
+import com.example.paymentreminder.ui.theme.Warning
 import java.time.LocalDate
 import java.time.Period
 import java.time.temporal.ChronoUnit
 
 @SuppressLint("NewApi")
-fun PaymentsReminderResponse.toDomain() : List<PaymentReminder>{
+fun PaymentsReminderResponse.toDomain(): List<PaymentReminder> {
     return this.map {
         val id = it.key
         val payment = it.value
+        val  arrears = Period.between(payment.dueDate.toLocalDate(), LocalDate.now()).days
         PaymentReminder(
             id = id,
             userId = payment.userId,
@@ -25,27 +33,30 @@ fun PaymentsReminderResponse.toDomain() : List<PaymentReminder>{
             notes = payment.notes,
             createdAt = payment.createdAt,
             updatedAt = payment.updatedAt,
-            arrears = Period.between(payment.dueDate.toLocalDate(), LocalDate.now()).days
+            arrears = arrears,
+            color = getColor(arrears),
+            title = getTitle(arrears)
         )
     }
 }
 
-fun PaymentReminder.toEntity() : PaymentsReminderEntity {
-        return PaymentsReminderEntity(
-            id = id,
-            userId = userId,
-            amount = amount,
-            currency = currency,
-            dueDate = dueDate,
-            reminderDate = reminderDate,
-            status = status,
-            notes = notes ?: "",
-            createdAt = createdAt,
-            updatedAt = updatedAt
-        )
+fun PaymentReminder.toEntity(): PaymentsReminderEntity {
+    return PaymentsReminderEntity(
+        id = id,
+        userId = userId,
+        amount = amount,
+        currency = currency,
+        dueDate = dueDate,
+        reminderDate = reminderDate,
+        status = status,
+        notes = notes ?: "",
+        createdAt = createdAt,
+        updatedAt = updatedAt
+    )
 }
 
-fun PaymentsReminderEntity.toDomain() : PaymentReminder {
+fun PaymentsReminderEntity.toDomain(): PaymentReminder {
+    val arrears = Period.between(dueDate.toLocalDate(), LocalDate.now()).days
     return PaymentReminder(
         id = id,
         userId = userId,
@@ -57,6 +68,36 @@ fun PaymentsReminderEntity.toDomain() : PaymentReminder {
         notes = notes,
         createdAt = createdAt,
         updatedAt = updatedAt,
-        arrears = ChronoUnit.DAYS.between(dueDate.toLocalDate(), LocalDate.now()).toInt()
+        arrears = arrears,
+        color = getColor(arrears),
+        title = getTitle(arrears)
     )
+}
+
+fun getTitle(arrears: Int) = when {
+    arrears < 0 -> {
+        R.string.days_next_payment
+    }
+
+    arrears > 3 -> {
+        R.string.arrears
+    }
+
+    else -> {
+        R.string.arrears
+    }
+}
+
+fun getColor(arrears: Int) = when {
+    arrears < 0 -> {
+        Success
+    }
+
+    arrears > 3 -> {
+        Danger
+    }
+
+    else -> {
+        Warning
+    }
 }

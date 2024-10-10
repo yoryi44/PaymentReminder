@@ -10,6 +10,7 @@ import com.example.paymentreminder.detail.domain.usecase.GetPaymentReminderByIdU
 import com.example.paymentreminder.detail.domain.usecase.InsertPaymentReminderUseCase
 import com.example.paymentreminder.home.presentation.models.PaymentReminderDetail
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.UUID
 import javax.inject.Inject
@@ -35,7 +36,7 @@ class DetailViewModel @Inject constructor(
                 val detail = getPaymentReminderByIdUseCase(id)
 
                 state = state.copy(
-                    id = detail.id ?: UUID.randomUUID().toString(),
+                    id = detail.id,
                     userId = detail.userId,
                     amount = detail.amount,
                     currency = detail.currency,

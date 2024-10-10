@@ -83,7 +83,7 @@ dependencies {
     implementation(libs.accompanist.pager)
     implementation(libs.accompanist.pager.indicators)
 
-    //NAVVIGATION  COMPOSE (NAV HOST)
+    //NAVIGATION  COMPOSE (NAV HOST)
     implementation(libs.nav.host)
 
     //DAGGER HILT
@@ -103,5 +103,4 @@ dependencies {
     implementation(libs.room.ktx)
     implementation(libs.room.runtime)
     ksp(libs.room.compiler)
-
 }

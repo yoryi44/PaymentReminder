@@ -5,9 +5,9 @@ coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
-lifecycleRuntimeKtx = "2.8.5"
+lifecycleRuntimeKtx = "2.8.6"
 activityCompose = "1.9.2"
-composeBom = "2024.09.01"
+composeBom = "2024.09.03"
 constraintlayoutComposeVersion = "1.0.1"
 googleGmsGoogleServicesVersion = "4.4.2"
 kspVersion = "1.9.23-1.0.19"
@@ -21,10 +21,10 @@ coreSplashscreen = "1.0.1"
 accompanist_version = "0.28.0"
 
 #NAVHOST
-nav_version = "2.8.0"
+nav_version = "2.8.2"
 
 #FIREBASE
-firebaseAnalyticsVersion = "22.1.0"
+firebaseAnalyticsVersion = "22.1.2"
 firebaseAuthVersion = "23.0.0"
 
 #DAGGER HILT

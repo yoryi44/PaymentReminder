@@ -17,7 +17,7 @@ import com.example.paymentreminder.paymentsReminder.presentation.models.PaymentR
 fun PaymentsReminderItem(
     modifier: Modifier = Modifier,
     paymentReminder: PaymentReminder,
-    onClick : () -> Unit
+    onClick: () -> Unit
 ) {
 
     //ITEM LIST
@@ -30,7 +30,12 @@ fun PaymentsReminderItem(
         shape = RoundedCornerShape(8.dp),
         elevation = CardDefaults.cardElevation(4.dp),
     ) {
-        PaymentListItemTitle(amount = paymentReminder.amount, arrears = paymentReminder.arrears)
+        PaymentListItemTitle(
+            amount = paymentReminder.amount,
+            arrears = paymentReminder.arrears,
+            title = paymentReminder.title,
+            color = paymentReminder.color
+        )
         PaymentListItemBody(paymentReminder = paymentReminder)
     }
 }

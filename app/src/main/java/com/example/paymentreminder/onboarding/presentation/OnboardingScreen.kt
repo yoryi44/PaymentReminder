@@ -25,22 +25,22 @@ fun OnboardingScreen(
         OnboardingPagerInformation(
             stringResource(id = R.string.welcome),
             stringResource(id = R.string.welcome_subtitle),
-            R.drawable.onboarding_background
+            R.mipmap.onboardin_background
         ),
         OnboardingPagerInformation(
             stringResource(id = R.string.pager_title_1),
             stringResource(id = R.string.pager_subtitle_1),
-            R.drawable.onboarding_background
+            R.mipmap.onboardin_background
         ),
         OnboardingPagerInformation(
             stringResource(id = R.string.pager_title_2),
             stringResource(id = R.string.pager_subtitle_2),
-            R.drawable.onboarding_background
+            R.mipmap.onboardin_background
         ),
         OnboardingPagerInformation(
             stringResource(id = R.string.pager_title_3),
             stringResource(id = R.string.pager_subtitle_3),
-            R.drawable.onboarding_background
+            R.mipmap.onboardin_background
         )
     )
 

@@ -1,5 +1,7 @@
 package com.example.paymentreminder.paymentsReminder.presentation.models
 
+import androidx.compose.ui.graphics.Color
+
 data class PaymentReminder(
     val id: String,            // ID único del recordatorio
     val userId: String,        // ID del usuario
@@ -11,5 +13,7 @@ data class PaymentReminder(
     val notes: String?,        // Notas adicionales
     val createdAt: String,     // Fecha de creación del recordatorio
     val updatedAt: String,     // Fecha de última actualización del recordatorio
-    val arrears: Int           // Dias en mora
+    val arrears: Int,          // Dias en mora
+    val title: Int,            // Item title
+    val color: Color             // Item color
 )

@@ -82,7 +82,6 @@ class PaymentsReminderViewModel @Inject constructor(
             isLoading()
 
             getPaymentsReminderUseCase().collectLatest {
-                Log.d("emitio", "Emitio")
                 state = state.copy(
                     paymentsReminder = it,
                     isLoading = false

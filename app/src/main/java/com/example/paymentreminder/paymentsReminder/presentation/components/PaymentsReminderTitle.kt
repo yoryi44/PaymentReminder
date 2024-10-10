@@ -16,52 +16,35 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.paymentreminder.R
+import com.example.paymentreminder.extensionFunctions.toLocalDate
+import com.example.paymentreminder.extensionFunctions.toNumberFormat
 
 @Composable
 fun PaymentListItemTitle(
     modifier: Modifier = Modifier,
     amount: String,
-    arrears: Int
+    arrears: Int,
+    color: Color,
+    title: Int
 ) {
-
-    //COLOR OF ITEM LIST AND TITLE
-    val backgroundColor: Color
-    val title: String
-
-    when {
-        arrears < 0 -> {
-            backgroundColor = colorResource(R.color.success)
-            title = "${stringResource(R.string.days_next_payment)} ${arrears * -1}"
-        }
-
-        arrears > 3 -> {
-            backgroundColor = colorResource(R.color.danger)
-            title = "${stringResource(R.string.arrears)} $arrears"
-        }
-
-        else -> {
-            backgroundColor = colorResource(R.color.warning)
-            title = "${stringResource(R.string.days_next_payment)} $arrears"
-        }
-    }
 
     //TITLE OF ITEM LIST
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .background(color = backgroundColor)
+            .background(color = color)
             .height(40.dp)
             .padding(10.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
-            text = "$amount",
+            text = amount.toNumberFormat(),
             fontSize = MaterialTheme.typography.titleMedium.fontSize,
             color = Color.White
         )
         Text(
-            text = title,
+            text = stringResource(id = title) + arrears,
             fontSize = MaterialTheme.typography.titleMedium.fontSize,
             color = Color.White
         )

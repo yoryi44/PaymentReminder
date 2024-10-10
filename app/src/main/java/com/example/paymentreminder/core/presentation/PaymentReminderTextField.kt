@@ -3,6 +3,9 @@ package com.example.paymentreminder.core.presentation
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -38,10 +41,10 @@ fun PaymentReminderTextField(
 ) {
     var passwordVisibility by remember { mutableStateOf(false) }
 
-    val passwordVisibilityIcon: Int = if (passwordVisibility) {
-        R.drawable.ic_lock_open
+    val passwordVisibilityIcon: ImageVector = if (passwordVisibility) {
+        Icons.Default.Clear
     } else {
-        R.drawable.ic_lock
+        Icons.Default.Check
     }
 
     Column(
@@ -61,7 +64,7 @@ fun PaymentReminderTextField(
                 if(isPassword)
                 {
                     IconButton(onClick = { passwordVisibility = !passwordVisibility }) {
-                        Icon(painterResource(id = passwordVisibilityIcon), contentDescription = null)
+                        Icon(passwordVisibilityIcon, contentDescription = null)
                     }
                 }
             },

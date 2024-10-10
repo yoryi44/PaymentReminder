@@ -6,7 +6,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.example.paymentreminder.paymentsReminder.presentation.PaymentsReminderScreen
-import com.example.paymentreminder.stadistics.presentation.StadisticsScreen
+import com.example.paymentreminder.statistics.presentation.StatisticsScreen
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.PagerState
@@ -31,7 +31,7 @@ fun HomePager(
             0 -> PaymentsReminderScreen {
                 onPaymentReminderDetail(it)
             }
-            1 -> StadisticsScreen()
+            1 -> StatisticsScreen()
         }
     }
 }

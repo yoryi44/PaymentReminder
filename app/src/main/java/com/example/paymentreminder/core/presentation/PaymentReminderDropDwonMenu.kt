@@ -1,6 +1,8 @@
 package com.example.paymentreminder.core.presentation
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
@@ -32,7 +34,7 @@ fun PaymentRemainderDropDwonMenu(
             onClick = { expanded = true },
             modifier = modifier,
         ) {
-            Icon(painterResource(id = R.drawable.ic_filter_list), contentDescription = "", tint = Color.Black)
+            Icon(imageVector = Icons.Default.ArrowDropDown, contentDescription = "", tint = Color.Black)
         }
 
         DropdownMenu(

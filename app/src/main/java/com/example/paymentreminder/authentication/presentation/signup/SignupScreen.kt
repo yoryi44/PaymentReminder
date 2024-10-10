@@ -47,7 +47,7 @@ fun SignupScreen(
     ) {
         //FONDO DE PANTALLA LOGIN
         Image(
-            painter = painterResource(id = R.drawable.background_signup),
+            painter = painterResource(id = R.drawable.ic_launcher_foreground),
             contentDescription = null,
             modifier = Modifier
                 .fillMaxWidth()

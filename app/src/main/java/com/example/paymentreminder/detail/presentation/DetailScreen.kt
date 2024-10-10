@@ -91,7 +91,7 @@ fun DetailScreen(
                 PaymentReminderTextField(
                     modifier = Modifier.fillMaxWidth(),
                     label = stringResource(R.string.amount),
-                    value = state.amount.toString().format(),
+                    value = state.amount.format(),
                     leadingIcon = Icons.Outlined.Edit,
                     keyboardType = KeyboardType.Number
                 )

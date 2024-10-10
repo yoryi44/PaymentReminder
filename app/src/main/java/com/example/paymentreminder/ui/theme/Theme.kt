@@ -34,7 +34,7 @@ private val LightColorScheme = lightColorScheme(
     onBackground = Blue900,
     onTertiary = White,
     surface = Blue50,
-    onSurface = Blue900
+    onSurface = Blue900,
 )
 
 @Composable

@@ -48,7 +48,7 @@ fun OnboardingPager(
 
         //FONDO DE PANTALLA PAGER
         Image(
-            painter = painterResource(id = R.drawable.onboarding_background),
+            painter = painterResource(id = R.mipmap.onboardin_background),
             contentDescription = null,
             modifier = Modifier
                 .fillMaxSize()
