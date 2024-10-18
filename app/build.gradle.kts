@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.google.gms.google.services)
+    alias(libs.plugins.jetbrainsKotlinSerialization)
 
     //DAGGER HILT
     alias(libs.plugins.kspPlugin)
@@ -85,6 +86,7 @@ dependencies {
 
     //NAVIGATION  COMPOSE (NAV HOST)
     implementation(libs.nav.host)
+    implementation(libs.kotlinx.serialization.json)
 
     //DAGGER HILT
     implementation(libs.hilt.android)

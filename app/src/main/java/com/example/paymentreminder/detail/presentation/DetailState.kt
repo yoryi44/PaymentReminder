@@ -1,7 +1,5 @@
 package com.example.paymentreminder.detail.presentation
 
-import java.math.BigDecimal
-
 data class DetailState (
     val id: String = "",
     val userId: String = "",
@@ -10,6 +8,7 @@ data class DetailState (
     val dueDate: String = "",
     val reminderDate: String = "",
     val status: String = "",
+    val category: String = "",
     val notes: String? = null,
     val createdAt: String = "",
     val updatedAt: String = "",

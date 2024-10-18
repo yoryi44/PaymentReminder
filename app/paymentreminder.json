@@ -1,0 +1,56 @@
+{
+  "PaymentReminder" : {
+    "e6d136a6-d16b-43a3-808b-7bd6a52d97a7" : {
+      "id": "64e3b8e2f2a1c914b7f19a01",
+      "userId": "user123",
+      "amount": "50000",
+      "currency": "USD",
+      "dueDate": "2024-09-01",
+      "reminderDate": "2024-08-25",
+      "status": "pending",
+      "category": "prueba",
+      "notes": "Monthly subscription for streaming service",
+      "createdAt": "2024-08-01",
+      "updatedAt": "2024-08-15"
+    },
+    "cbeabef9-4b81-43d1-8eed-5c6ac7a2b926" : {
+      "id": "64e3b8e2f2a1c914b7f19a02",
+      "userId": "user456",
+      "amount": "150000",
+      "currency": "EUR",
+      "dueDate": "2024-09-10",
+      "reminderDate": "2024-09-03",
+      "status": "paid",
+      "category": "prueba",
+      "notes": "Rent payment for September",
+      "createdAt": "2024-08-05",
+      "updatedAt": "2024-08-15"
+    },
+    "ea8c642e-1aa5-41be-83f3-0a81f4bb0823" : {
+      "id": "64e3b8e2f2a1c914b7f19a03",
+      "userId": "user789",
+      "amount": "250000",
+      "currency": "GBP",
+      "dueDate": "2024-08-20",
+      "reminderDate": "2024-08-15",
+      "status": "overdue",
+      "category": "prueba",
+      "notes": "Payment for online course",
+      "createdAt": "2024-07-25",
+      "updatedAt": "2024-08-16"
+    },
+    "acbecec5-3db9-4cf8-b16c-58a775bdc453" : {
+      "id": "64e3b8e2f2a1c914b7f19a04",
+      "userId": "user321",
+      "amount": "99000",
+      "currency": "USD",
+      "dueDate": "2024-09-05",
+      "reminderDate": "2024-08-30",
+      "status": "pending",
+      "category": "prueba",
+      "notes": "Annual subscription for software license",
+      "createdAt": "2024-08-10",
+      "updatedAt": "2024-08-15"
+    }
+  }
+}

@@ -12,8 +12,10 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.compose.rememberNavController
+import com.example.paymentreminder.navigation.Home
+import com.example.paymentreminder.navigation.Login
 import com.example.paymentreminder.navigation.NavigationHost
-import com.example.paymentreminder.navigation.NavigationRoute
+import com.example.paymentreminder.navigation.Onboarding
 import com.example.paymentreminder.ui.theme.PaymentReminderTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -46,18 +48,18 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    private fun getDestination(): NavigationRoute {
+    private fun getDestination(): Any {
 
         if(mainViewModel.isLoggedIn)
         {
-            return NavigationRoute.Home
+            return Home
         }
 
         if(mainViewModel.hasSeenOnboarding)
         {
-            return NavigationRoute.Login
+            return Login
         }
 
-        return NavigationRoute.Onboarding
+        return Onboarding
     }
 }

@@ -14,6 +14,7 @@ data class PaymentsReminderEntity(
     val notes: String,
     val reminderDate: String,
     val status: String,
+    val category: String,
     val updatedAt: String,
     val userId: String
 )

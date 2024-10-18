@@ -18,6 +18,7 @@ fun PaymentsReminderEntity.toDetailDomain(): PaymentReminderDetail {
         dueDate = dueDate,
         reminderDate = reminderDate,
         status = status,
+        category = category,
         notes = notes,
         createdAt = createdAt,
         updatedAt = updatedAt,
@@ -34,6 +35,7 @@ fun PaymentReminderDetail.toEntity() : PaymentsReminderEntity {
         dueDate = dueDate,
         reminderDate = reminderDate,
         status = status,
+        category = category,
         notes = notes ?: "",
         createdAt = createdAt,
         updatedAt = updatedAt
@@ -49,6 +51,7 @@ fun PaymentReminderDetail.toDto() : PaymentsReminderResponse {
         dueDate = dueDate,
         reminderDate = reminderDate,
         status = status,
+        category = category,
         notes = notes ?: "",
         createdAt = createdAt,
         updatedAt = updatedAt

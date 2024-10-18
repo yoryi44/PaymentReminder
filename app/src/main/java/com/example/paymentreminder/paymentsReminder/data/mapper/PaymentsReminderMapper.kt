@@ -1,9 +1,6 @@
 package com.example.paymentreminder.paymentsReminder.data.mapper
 
 import android.annotation.SuppressLint
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.stringResource
 import com.example.paymentreminder.R
 import com.example.paymentreminder.extensionFunctions.toLocalDate
 import com.example.paymentreminder.paymentsReminder.data.local.entity.PaymentsReminderEntity
@@ -30,6 +27,7 @@ fun PaymentsReminderResponse.toDomain(): List<PaymentReminder> {
             dueDate = payment.dueDate,
             reminderDate = payment.reminderDate,
             status = payment.status,
+            category = payment.category,
             notes = payment.notes,
             createdAt = payment.createdAt,
             updatedAt = payment.updatedAt,
@@ -49,6 +47,7 @@ fun PaymentReminder.toEntity(): PaymentsReminderEntity {
         dueDate = dueDate,
         reminderDate = reminderDate,
         status = status,
+        category = category,
         notes = notes ?: "",
         createdAt = createdAt,
         updatedAt = updatedAt
@@ -65,10 +64,11 @@ fun PaymentsReminderEntity.toDomain(): PaymentReminder {
         dueDate = dueDate,
         reminderDate = reminderDate,
         status = status,
+        category = category,
         notes = notes,
         createdAt = createdAt,
         updatedAt = updatedAt,
-        arrears = arrears,
+        arrears = if(arrears < 0) arrears * -1 else arrears,
         color = getColor(arrears),
         title = getTitle(arrears)
     )

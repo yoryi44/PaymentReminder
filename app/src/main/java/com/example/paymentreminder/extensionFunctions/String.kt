@@ -19,3 +19,7 @@ fun String.toNumberFormat(): String {
     val format = NumberFormat.getCurrencyInstance(Locale("es", "CO"))
     return format.format(this.toDouble())
 }
+
+fun String.numberFormatToString(): String {
+    return this.replace("[.\$ ]".toRegex(), "").trim()
+}

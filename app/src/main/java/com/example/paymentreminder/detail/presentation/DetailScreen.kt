@@ -21,15 +21,19 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.paymentreminder.R
+import com.example.paymentreminder.core.model.PaymentCategories
 import com.example.paymentreminder.core.presentation.PaymentRemainderButton
+import com.example.paymentreminder.core.presentation.PaymentReminderSelect
 import com.example.paymentreminder.core.presentation.PaymentReminderTextField
 import com.example.paymentreminder.core.presentation.PaymentReminderTitle
 import com.example.paymentreminder.core.presentation.PaymentreminderCircularProgressIndicator
+import com.example.paymentreminder.ui.theme.Blue700
 import java.util.Calendar
 
 @SuppressLint("DefaultLocale")
 @Composable
 fun DetailScreen(
+    paymentReminderId: String?,
     detailViewModel: DetailViewModel = hiltViewModel(),
     onSave : () -> Unit,
 ) {
@@ -40,10 +44,18 @@ fun DetailScreen(
     val year = calendar.get(Calendar.YEAR)
     val month = calendar.get(Calendar.MONTH)
     val day = calendar.get(Calendar.DAY_OF_MONTH)
+    val options = PaymentCategories.categories.keys.toList()
 
     LaunchedEffect(key1 = state.isSave) {
         if(state.isSave) {
             onSave()
+        }
+    }
+
+    LaunchedEffect(key1 = paymentReminderId) {
+        if(!paymentReminderId.isNullOrBlank())
+        {
+            detailViewModel.onEvent(DetailEvent.idChanged(paymentReminderId))
         }
     }
 
@@ -119,9 +131,13 @@ fun DetailScreen(
                     detailViewModel.onEvent(DetailEvent.notesChanged(it))
                 }
 
+                PaymentReminderSelect(options = options, label = "options", category = state.category) {
+                    DetailEvent.categoryChanged(it)
+                }
+
             }
         }
-        PaymentRemainderButton(modifier = Modifier.fillMaxWidth(), text = "Save") {
+        PaymentRemainderButton(modifier = Modifier.fillMaxWidth(), text = "Save", containerColor = Blue700) {
             detailViewModel.onEvent(DetailEvent.PaymentSave)
         }
     }

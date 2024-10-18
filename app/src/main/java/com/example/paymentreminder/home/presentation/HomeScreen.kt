@@ -7,11 +7,10 @@ import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.paymentreminder.R
 import com.example.paymentreminder.home.presentation.components.HomeBottomBar
 import com.example.paymentreminder.home.presentation.components.HomePager
+import com.example.paymentreminder.ui.theme.Warning
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.rememberPagerState
 
@@ -34,7 +33,7 @@ fun HomeScreen(
         floatingActionButton = {
             FloatingActionButton(
                 onClick = { onPaymentReminderDetail("") },
-                containerColor = colorResource(id = R.color.warning),
+                containerColor = Warning,
                 shape = CircleShape
             ) {
                 Icon(

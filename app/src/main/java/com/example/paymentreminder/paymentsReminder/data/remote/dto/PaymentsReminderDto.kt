@@ -11,6 +11,7 @@ data class PaymentsReminderDto(
     @SerializedName("notes") val notes: String,
     @SerializedName("reminderDate") val reminderDate: String,
     @SerializedName("status") val status: String,
+    @SerializedName("category") val category: String,
     @SerializedName("updatedAt") val updatedAt: String,
     @SerializedName("userId") val userId: String
 )
