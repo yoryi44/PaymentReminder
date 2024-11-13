@@ -132,7 +132,7 @@ fun DetailScreen(
                 }
 
                 PaymentReminderSelect(options = options, label = "options", category = state.category) {
-                    DetailEvent.categoryChanged(it)
+                    detailViewModel.onEvent(DetailEvent.categoryChanged(it))
                 }
 
             }

@@ -3,7 +3,6 @@ package com.example.paymentreminder.detail.presentation
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.paymentreminder.detail.domain.usecase.GetPaymentReminderByIdUseCase
@@ -12,7 +11,6 @@ import com.example.paymentreminder.extensionFunctions.numberFormatToString
 import com.example.paymentreminder.extensionFunctions.toNumberFormat
 import com.example.paymentreminder.home.presentation.models.PaymentReminderDetail
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.util.UUID
@@ -20,7 +18,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DetailViewModel @Inject constructor(
-    savedStateHandle: SavedStateHandle,
     private val getPaymentReminderByIdUseCase: GetPaymentReminderByIdUseCase,
     private val insertPaymentReminderUseCase: InsertPaymentReminderUseCase
 ) : ViewModel() {

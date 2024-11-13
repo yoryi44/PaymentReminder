@@ -16,10 +16,13 @@ fun String.toLocalDate(): LocalDate {
 }
 
 fun String.toNumberFormat(): String {
-    val format = NumberFormat.getCurrencyInstance(Locale("es", "CO"))
+    if(this.isEmpty()) return "0"
+    val format = NumberFormat.getCurrencyInstance(Locale("es", "CO")).apply {
+        maximumFractionDigits = 0
+    }
     return format.format(this.toDouble())
 }
 
 fun String.numberFormatToString(): String {
-    return this.replace("[.\$ ]".toRegex(), "").trim()
+    return this.replace("[.\$ \u00A0]".toRegex(), "").trim()
 }

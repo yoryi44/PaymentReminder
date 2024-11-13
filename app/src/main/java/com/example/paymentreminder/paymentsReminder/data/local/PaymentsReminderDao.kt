@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.paymentreminder.detail.data.local.entity.PaymentReminderSyncEntity
+import com.example.paymentreminder.paymentsReminder.data.dto.StatisticsDto
 import com.example.paymentreminder.paymentsReminder.data.local.entity.PaymentsReminderEntity
 import kotlinx.coroutines.flow.Flow
 
@@ -16,6 +17,9 @@ interface PaymentsReminderDao {
 
     @Query("SELECT * FROM PaymentsReminderEntity ORDER BY createdAt DESC")
     fun getAllPaymentsReminder(): Flow<List<PaymentsReminderEntity>>
+
+    @Query("SELECT amount,category FROM PaymentsReminderEntity ORDER BY createdAt DESC")
+    fun getStatistics(): List<StatisticsDto>
 
     @Query("SELECT * FROM PaymentsReminderEntity WHERE id = :id")
     fun getPaymentReminderById(id: String): PaymentsReminderEntity
