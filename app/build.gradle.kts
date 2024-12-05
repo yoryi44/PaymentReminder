@@ -7,11 +7,12 @@ plugins {
     //DAGGER HILT
     alias(libs.plugins.kspPlugin)
     alias(libs.plugins.daggerHiltPlugin)
+    alias(libs.plugins.compose.compiler)
 }
 
 android {
     namespace = "com.example.paymentreminder"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.paymentreminder"
@@ -105,4 +106,9 @@ dependencies {
     implementation(libs.room.ktx)
     implementation(libs.room.runtime)
     ksp(libs.room.compiler)
+
+    //WORK MANAGER
+    implementation(libs.androidx.work.runtime.ktx)
+    implementation(libs.androidx.hilt.work)
+
 }

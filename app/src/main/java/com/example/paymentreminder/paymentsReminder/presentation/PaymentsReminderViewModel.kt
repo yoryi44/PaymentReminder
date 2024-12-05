@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.paymentreminder.paymentsReminder.domain.usecase.GetPaymentsReminderSearchUseCase
 import com.example.paymentreminder.paymentsReminder.domain.usecase.GetPaymentsReminderUseCase
+import com.example.paymentreminder.paymentsReminder.domain.usecase.SyncPaymentReminderUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
@@ -17,7 +18,8 @@ import javax.inject.Inject
 @HiltViewModel
 class PaymentsReminderViewModel @Inject constructor(
     private val getPaymentsReminderUseCase: GetPaymentsReminderUseCase,
-    private val getPaymentsReminderSearchUseCase: GetPaymentsReminderSearchUseCase
+    private val getPaymentsReminderSearchUseCase: GetPaymentsReminderSearchUseCase,
+    private val syncPaymentReminderUseCase: SyncPaymentReminderUseCase
 ) : ViewModel() {
 
     var state by mutableStateOf(PaymentsReminderState())
@@ -27,6 +29,10 @@ class PaymentsReminderViewModel @Inject constructor(
 
     init {
         getPaymentsReminder()
+
+        viewModelScope.launch{
+            syncPaymentReminderUseCase()
+        }
     }
 
     fun onEvent(event: PaymentsReminderEvent) {

@@ -8,4 +8,5 @@ interface PaymentsReminderRepository {
     suspend fun getPaymentsReminder() : Flow<List<PaymentReminder>>
     suspend fun getPaymentsReminderSearch(searchQuery: String, orderBy: String) : Flow<List<PaymentReminder>>
     suspend fun insertPaymentsReminder (paymentsReminder : List<PaymentReminder>)
+    suspend fun syncClient()
 }

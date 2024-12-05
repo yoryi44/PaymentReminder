@@ -3,7 +3,9 @@ package com.example.paymentreminder.paymentsReminder.data.mapper
 import android.annotation.SuppressLint
 import com.example.paymentreminder.R
 import com.example.paymentreminder.extensionFunctions.toLocalDate
+import com.example.paymentreminder.paymentsReminder.data.local.PaymentsReminderDao
 import com.example.paymentreminder.paymentsReminder.data.local.entity.PaymentsReminderEntity
+import com.example.paymentreminder.paymentsReminder.data.remote.dto.PaymentsReminderDto
 import com.example.paymentreminder.paymentsReminder.data.remote.dto.PaymentsReminderResponse
 import com.example.paymentreminder.paymentsReminder.presentation.models.PaymentReminder
 import com.example.paymentreminder.ui.theme.Danger
@@ -11,6 +13,7 @@ import com.example.paymentreminder.ui.theme.Success
 import com.example.paymentreminder.ui.theme.Warning
 import java.time.LocalDate
 import java.time.Period
+import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
 
 @SuppressLint("NewApi")
@@ -55,7 +58,8 @@ fun PaymentReminder.toEntity(): PaymentsReminderEntity {
 }
 
 fun PaymentsReminderEntity.toDomain(): PaymentReminder {
-    val arrears = Period.between(dueDate.toLocalDate(), LocalDate.now()).days
+    val dueDateFormat = LocalDate.parse(dueDate, DateTimeFormatter.ISO_DATE)
+    val arrears = ChronoUnit.DAYS.between(dueDateFormat, LocalDate.now()).toInt()
     return PaymentReminder(
         id = id,
         userId = userId,
@@ -72,6 +76,24 @@ fun PaymentsReminderEntity.toDomain(): PaymentReminder {
         color = getColor(arrears),
         title = getTitle(arrears)
     )
+}
+
+fun PaymentReminder.toDto(): PaymentsReminderResponse {
+    val dto = PaymentsReminderDto(
+        id = id,
+        userId = userId,
+        amount = amount,
+        currency = currency,
+        dueDate = dueDate,
+        reminderDate = reminderDate,
+        status = status,
+        category = category,
+        notes = notes ?: "",
+        createdAt = createdAt,
+        updatedAt = updatedAt
+    )
+
+    return mapOf(id to dto)
 }
 
 fun getTitle(arrears: Int) = when {

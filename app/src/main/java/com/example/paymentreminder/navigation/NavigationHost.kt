@@ -1,12 +1,9 @@
 package com.example.paymentreminder.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.lifecycle.SavedStateHandle
 import androidx.navigation.NavHostController
-import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.navArgument
 import androidx.navigation.toRoute
 import com.example.paymentreminder.authentication.presentation.login.LoginScreen
 import com.example.paymentreminder.authentication.presentation.signup.SignupScreen

@@ -1,6 +1,7 @@
 package com.example.paymentreminder.paymentsReminder.data.local
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -34,5 +35,11 @@ interface PaymentsReminderDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertPaymentReminderSync(habitSyncEntity: PaymentReminderSyncEntity)
+
+    @Query("SELECT * FROM PaymentReminderSyncEntity")
+    fun getAllPaymentsReminderSync(): List<PaymentReminderSyncEntity>
+
+    @Delete
+    suspend fun deletePaymentReminderSync(paymentReminderSyncEntity: PaymentReminderSyncEntity)
 
 }

@@ -2,6 +2,7 @@ package com.example.paymentreminder.paymentsReminder.data.di
 
 import android.content.Context
 import androidx.room.Room
+import androidx.work.WorkManager
 import com.example.paymentreminder.paymentsReminder.data.local.PaymentsReminderDao
 import com.example.paymentreminder.paymentsReminder.data.local.PaymentsReminderDataBase
 import com.example.paymentreminder.paymentsReminder.data.remote.PaymentsReminderApi
@@ -9,6 +10,7 @@ import com.example.paymentreminder.paymentsReminder.data.repository.PaymentsRemi
 import com.example.paymentreminder.paymentsReminder.domain.repository.PaymentsReminderRepository
 import com.example.paymentreminder.paymentsReminder.domain.usecase.GetPaymentsReminderSearchUseCase
 import com.example.paymentreminder.paymentsReminder.domain.usecase.GetPaymentsReminderUseCase
+import com.example.paymentreminder.paymentsReminder.domain.usecase.SyncPaymentReminderUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -29,8 +31,8 @@ object PaymentsReminderModule {
 
     @Provides
     @Singleton
-    fun providePaymentsReminderRepository(paymentsReminderApi: PaymentsReminderApi, paymentsReminderDao: PaymentsReminderDao) : PaymentsReminderRepository {
-        return PaymentsReminderRepositoryImpl(paymentsReminderApi,paymentsReminderDao)
+    fun providePaymentsReminderRepository(paymentsReminderApi: PaymentsReminderApi, paymentsReminderDao: PaymentsReminderDao, workManager: WorkManager) : PaymentsReminderRepository {
+        return PaymentsReminderRepositoryImpl(paymentsReminderApi,paymentsReminderDao, workManager)
     }
 
 
@@ -45,6 +47,13 @@ object PaymentsReminderModule {
     fun provideGetPaymentsReminderSearchUseCase(paymentsReminderRepository: PaymentsReminderRepository) : GetPaymentsReminderSearchUseCase {
         return GetPaymentsReminderSearchUseCase(paymentsReminderRepository)
     }
+
+    @Provides
+    @Singleton
+    fun provideSyncClientUseCase(paymentsReminderRepository: PaymentsReminderRepository) : SyncPaymentReminderUseCase {
+        return SyncPaymentReminderUseCase(paymentsReminderRepository)
+    }
+
 
     @Singleton
     @Provides
@@ -72,5 +81,11 @@ object PaymentsReminderModule {
     @Singleton
     @Provides
     fun providePaymentsReminderDao(db: PaymentsReminderDataBase) = db.paymentsReminderDao
+
+    @Singleton
+    @Provides
+    fun provideWorkManager(@ApplicationContext context: Context): WorkManager {
+        return WorkManager.getInstance(context)
+    }
 
 }
